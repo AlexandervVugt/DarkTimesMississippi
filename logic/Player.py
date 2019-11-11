@@ -1,86 +1,87 @@
-
+from Boat import Boat
 
 class Player:
-    def __init__(self, name: str, wheat: int = 10, gold: int = 3, boat):
+    def __init__(self, name: str, wheat: int = 10, gold: int = 3, boat: Boat = Boat()):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
         self.__boat = boat
+        boat.getLoad()
     
-    '''
-    Takes a mutation value as input.
-    Adds positive mutations, subtracts negative mutations.
-    Returns True if the mutation succeeded, False otherwise.
-    '''
     def mutateWheat(self, mutation: int = 1) -> bool:
+        """
+        Takes a mutation value as input.
+        Adds positive mutations, subtracts negative mutations.
+        Returns True if the mutation succeeded, False otherwise.
+        """
+
         if mutation < 0 and self.__wheat + mutation < 0:
             return False
         else:
             self.__wheat += mutation
             return True
         
-    '''
-    Takes a mutation value as input.
-    Adds positive mutations, subtracts negative mutations.
-    Returns True if the mutation succeeded, False otherwise.
-    '''
     def mutateGold(self, mutation: int) -> bool:
+        """
+        Takes a mutation value as input.
+        Adds positive mutations, subtracts negative mutations.
+        Returns True if the mutation succeeded, False otherwise.
+        """
+
         if mutation < 0 and self.__gold + mutation < 0:
             return False
         else:
             self.__gold += mutation
             return True
 
-    '''
-    Returns the amount of wheat this Player posesses.
-    '''
+    
     def getWheat(self) -> int:
+        """Returns the amount of wheat this Player posesses."""
+
         return self.__wheat
 
-    '''
-    Returns the amount of gold this Player posesses.
-    '''
+    
     def getGold(self) -> int:
+        """Returns the amount of gold this Player posesses."""
+
         return self.__gold
 
-    '''
-    Returns whether this Player has a Boat or not.
-    '''
+    
     def hasBoat(self) -> bool:
+        """Returns whether this Player has a Boat or not."""
+
         return self.__boat != None
 
-    '''
-    Destroys this Player's Boat.
-    '''
     def destroyBoat(self):
+        """Destroys this Player's Boat."""
+
         self.__boat = None
     
-    '''
-    Assigns a Boat to this Player.
-    '''
     def assignBoat(self, boat) -> bool:
+        """Assigns a Boat to this Player."""
+
         if self.hasBoat:
             return False
         self.__boat = boat
         return self.__boat == boat
 
-    '''
-    Returns the name of this Player.
-    '''
+    
     def getName(self) -> str:
+        """Returns the name of this Player."""
+
         return self.__name
 
-    '''
-    Returns a human-readable String representation of this Player.
-    '''
+    
     def toString(self) -> str:
+        """Returns a human-readable String representation of this Player."""
+
         template = "Player: {0:s}\nGold: {1:d}\nWheat: {2:d}\nBoat: {3:s}"
         return template.format(self.__name, self.__gold, self.__wheat, self.__boat)
 
-    '''
-    Checks whether the provided Object is a Player and equal to this player.
-    '''
+    
     def equals(self, other):
+        """Checks whether the provided Object is a Player and equal to this player."""
+
         if not isinstance(other, Player):
             return False
         if other.__name != self.__name or other.__gold != self.__gold or other.__wheat != self.__wheat:
