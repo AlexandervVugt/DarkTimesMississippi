@@ -6,6 +6,7 @@ class GameController:
         global turn
         turn = 0
         self.__game = game
+        self.__player = game.getPlayers[0]
 
     def nextPlayer(self) -> Player:
         """Selects the next player who is at turn."""
