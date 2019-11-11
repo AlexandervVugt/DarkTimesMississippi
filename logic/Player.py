@@ -75,8 +75,8 @@ class Player:
     def toString(self) -> str:
         """Returns a human-readable String representation of this Player."""
 
-        template = "Player: {0:s}\nGold: {1:d}\nWheat: {2:d}\nBoat: {3:s}"
-        return template.format(self.__name, self.__gold, self.__wheat, self.__boat)
+        template = "Player: {0:s}\n\tGold: {1:d}\n\tWheat: {2:d}\n\t{3:s}"
+        return template.format(self.__name, self.__gold, self.__wheat, self.__boat.toString())
 
     
     def equals(self, other):
@@ -84,6 +84,7 @@ class Player:
 
         if not isinstance(other, Player):
             return False
-        if other.__name != self.__name or other.__gold != self.__gold or other.__wheat != self.__wheat:
+        if other.__name != self.__name or other.__gold != self.__gold or other.__wheat != self.__wheat \
+                    or not self.__boat.equals(other.__boat):
             return False
         return True

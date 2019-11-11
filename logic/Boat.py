@@ -53,5 +53,5 @@ class Boat:
     def toString(self) -> str:
         """Returns a human-readable String representation of this Boat"""
 
-        template = "Boat:\nCapacity: {0:d}\nLoad:{1:d}\nSell price: {2:d}"
+        template = "Boat:\n\tCapacity: {0:d}\n\tLoad:{1:d}\n\tSell price: {2:d}"
         return template.format(self.__capacity, self.__load, self.__sellPrice)
