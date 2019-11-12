@@ -10,22 +10,21 @@ def setup():
     framePointer = 0
     
 def draw():
-    global cardFront, cardBack, animate, before, done, framePointer
+    global cardFront, cardBack, state, framePointer
     background(0, 255, 0)
-    #imageMode(CENTER)
-    #pushMatrix()
     translate(width/2, height/2)
-    #pushMatrix()
-    if animate:
-        rotate(radians(((frameCount - framePointer)/frameRate)*360))
-        scale((frameCount - framePointer)/(5*frameRate))
-    #popMatrix()
+    text("framepointer: " + str(framePointer), -400, -400)
+    text("frameCount: " + str(frameCount), -400, -375)
+    text("stopcondition: " + str(5*frameRate+framePointer), -400, -350)
+    text("state: " + state, -400, -325)
     if state == "before":
         textAlign(CENTER)
         textSize(32)
         fill(255)
         text("Click anywhere to draw a card", 0, 0)
     if state == "animate":
+        rotate(radians(((frameCount - framePointer)/frameRate)*360))
+        scale((frameCount - framePointer)/(5*frameRate))
         image(cardBack, -(cardBack.width/2), -(cardBack.height/2))
         if frameCount <= 5*frameRate + framePointer:
             state = "done"
