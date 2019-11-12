@@ -1,5 +1,6 @@
 from Player import Player
 import json
+from Event import Event as Event
 
 class Game:
     EVENT_SOURCE = ""   #The path to the file that contains the event data
@@ -12,9 +13,15 @@ class Game:
     def __readEvents(self, path: str) -> list:
         """Reads in the events from the provided file."""
 
+        events = []
+
         datafile = open(path, "r")
         jsondata = datafile.read()
-        events = json.loads(jsondata)
+        data = json.loads(jsondata)
+
+        for chunk in data:
+            events.append(Event.objectify(chunk))
+
         return events
 
     def getPlayers(self) -> list:
