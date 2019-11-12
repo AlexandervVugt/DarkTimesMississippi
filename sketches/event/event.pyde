@@ -13,10 +13,6 @@ def draw():
     global cardFront, cardBack, state, framePointer
     background(0, 255, 0)
     translate(width/2, height/2)
-    text("framepointer: " + str(framePointer), -400, -400)
-    text("frameCount: " + str(frameCount), -400, -375)
-    text("stopcondition: " + str(5*frameRate+framePointer), -400, -350)
-    text("state: " + state, -400, -325)
     if state == "before":
         textAlign(CENTER)
         textSize(32)
@@ -26,7 +22,7 @@ def draw():
         rotate(radians(((frameCount - framePointer)/frameRate)*360))
         scale((frameCount - framePointer)/(5*frameRate))
         image(cardBack, -(cardBack.width/2), -(cardBack.height/2))
-        if frameCount <= 5*frameRate + framePointer:
+        if frameCount >= 5*frameRate + framePointer:
             state = "done"
     if state == "done":
         image(cardFront, -(cardFront.width/2), -(cardBack.height/2))
