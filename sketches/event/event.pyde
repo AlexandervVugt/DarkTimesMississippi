@@ -20,9 +20,9 @@ def draw():
         text("Click anywhere to draw a card", 0, 0)
     if state == "animate":
         rotate(radians(((frameCount - framePointer)/frameRate)*360))
-        scale((frameCount - framePointer)/(5*frameRate))
+        scale((frameCount - framePointer)/(3*frameRate))
         image(cardBack, -(cardBack.width/2), -(cardBack.height/2))
-        if frameCount >= 5*frameRate + framePointer:
+        if frameCount >= 3*frameRate + framePointer:
             state = "done"
     if state == "done":
         image(cardFront, -(cardFront.width/2), -(cardBack.height/2))
@@ -32,3 +32,5 @@ def mousePressed():
     if state == "before":
         framePointer = frameCount
         state = "animate"
+    elif state == "animate":
+        state = "done"
