@@ -1,4 +1,6 @@
-import inputScreen
+import inputScreen, event
+
+currentScene = inputScreen
 
 def setup():
     global currentScene
