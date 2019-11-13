@@ -24,9 +24,13 @@ def draw():
         
 def keyTyped():
     global input, players
+    alp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     if len(players) == 4:
         return
-    input += key
+    if key == ENTER or key == RETURN or key == BACKSPACE:
+        return
+    if key in alp:
+        input += key
     
 def keyPressed():
     global players, input, title
