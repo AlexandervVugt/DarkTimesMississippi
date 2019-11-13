@@ -1,6 +1,7 @@
 from Player import Player
 import json
-from Event import Event as Event
+from Event import *
+import random
 
 class Game:
     EVENT_SOURCE = ""   #The path to the file that contains the event data
@@ -20,7 +21,7 @@ class Game:
         data = json.loads(jsondata)
 
         for chunk in data:
-            events.append(Event.objectify(chunk))
+            events.append(Event.objectify(*chunk))
 
         return events
 
@@ -28,3 +29,6 @@ class Game:
         """Returns the list of players participating in this game."""
 
         return self.__players
+
+    def randEvent(self) -> Event:
+        return self.__events[random.randrange(0, len(self.__events))]
