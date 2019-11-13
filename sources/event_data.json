@@ -1,140 +1,182 @@
 [
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "tornado",
+        "target": null,
+        "effect": null,
+        "description": "A violent storm sets, a tornado appears! Shall thou risk travelling further? Continue (and lose 2 wheat) or skip thine next turn."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "amateur farm bandit",
+        "target": null,
+        "effect": null,
+        "description": "An amateurish bandit robbed thine farm whilst thee were adventuring! You lose 1 wheat out of your farm stock."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "farm bandit",
+        "target": null,
+        "effect": null,
+        "description": "A bandit robbed thine farm whilst thee were adventuring! You lose 2 wheat out of your farm stock."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "plague",
+        "target": null,
+        "effect": null,
+        "description": "A plague roams the lands, the harvest doesn’t look good. Not much wheat will be left for thine next journey. At thine next journey to the market, thou shall carry no more than 8 wheat aboard."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "sickness",
+        "target": null,
+        "effect": null,
+        "description": "The weather and the barren circumstances start taking their toll on thine health. Thou hast gotten sick, and should take some rest. Skip thine next 2 turns."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "rotting",
+        "target": null,
+        "effect": null,
+        "description": "Thine boat is rotting! Let’s hope thou won’t encounter obstacles on thine journey. When encountering an obstacle, thou will lose 2 wheat."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "clogged canals",
+        "target": null,
+        "effect": null,
+        "description": "Bad weather has clogged the canals. Thou can’t take any shortcuts on this journey."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "exhaustion",
+        "target": null,
+        "effect": null,
+        "description": "All these travels have exhausted thee. Skip thine next turn upon arriving at the market."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "windstill",
+        "target": null,
+        "effect": null,
+        "description": "The river seems peaceful, thou can’t feel a breeze. At thine next turn, thou shall subtract 2 from the amount thee rolled."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "wreckage",
+        "target": null,
+        "effect": null,
+        "description": "One man’s trash is another man’s treasure. Thou hast stumbled upon a stranded ship, and it has wheat aboard! Thou receives 2 wheat, provided your boat can carry more."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "free ship",
+        "target": null,
+        "effect": null,
+        "description": "Drowning in sight, 12 o’clock! The drowning man thou hast saved, turns out to be the shipwright’s son. He will reward thee generously. Thou will receive an enhanced vessel for thine next journey, free of charge."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "ignore obstacles",
+        "target": null,
+        "effect": null,
+        "description": "In thine dreams, a vision about thine journey appeared. There are no obstacles to be seen! Thou may ignore any obstacles thee encounters on this journey."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "fertilizer",
+        "target": null,
+        "effect": null,
+        "description": "The fertilizer thee used has greatly increased thine harvest. At thine next 3 turns, thou will receive 2 wheat instead of 1."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "rapid",
+        "target": null,
+        "effect": null,
+        "description": "Thine boat has gotten into a rapid! Take 3 extra steps."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "alligator",
+        "target": null,
+        "effect": null,
+        "description": "Thou hast found an alligator to leave behind for thine opponents. Thou may place the alligator obstacle on the board."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "sea mine",
+        "target": null,
+        "effect": null,
+        "description": "Thou hast found a sea mine to leave behind for thine opponents. Thou may place the sea mine obstacle on the board."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "bear trap",
+        "target": null,
+        "effect": null,
+        "description": "Thou hast found a bear trap to leave behind for thine opponents. Thou may place the bear trap obstacle on the board."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "small hole",
+        "target": null,
+        "effect": null,
+        "description": "Thine boat has hit something! Water is leaking into the boat through a small hole. Thou lost a quarter of thine load."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "small rock",
+        "target": null,
+        "effect": null,
+        "description": "Thine boat has bumped into a small rock! Water is leaking into the boat rapidly. Thou lost half thine load, and shall skip thine next turn to get rid of the water inside the boat."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "rock",
+        "target": null,
+        "effect": null,
+        "description": "Thine vessel has collided with a rock and sunk! Thou lost thine boat and all load aboard."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "amateurish bandit",
+        "target": null,
+        "effect": null,
+        "description": "An amateurish bandit attempted to mug you. The poor fool. Take 3 extra steps and skip thine next turn."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "bandit",
+        "target": null,
+        "effect": null,
+        "description": "Thou hast been mugged by a bandit! Thou lost half your load."
     },
     {
-        "name": "",
-        "target": "",
-        "effect": "",
-        "description": ""
+        "name": "ambitious bandit",
+        "target": null,
+        "effect": null,
+        "description": "Thou hast been robbed by an ambitious bandit! Thou hast lost thine ship and its load."
+    },
+    {
+        "name": "ambush",
+        "target": null,
+        "effect": null,
+        "description": "An ambush! Thine boat is stopped by a mob of savage bandits. Thou hast jumped overboard and swum away to save thine dear life. Thou hast lost thine ship and its load."
+    },
+    {
+        "name": "extortion",
+        "target": null,
+        "effect": null,
+        "description": "Thou are being extorted by a criminal! Give up all thine wheat aboard, or pay him off with 10 dollars. In the latter case, the criminal will extort a player of your choosing for half their load or 5 dollars."
+    },
+    {
+        "name": "old farmer",
+        "target": null,
+        "effect": null,
+        "description": "At the side of the river thou sees an old farmer with an offer thou can’t refuse. The farmer offers you 2 wheat in exchange for 1 dollar, up to 10 wheat."
+    },
+    {
+        "name": "purse",
+        "target": null,
+        "effect": null,
+        "description": "Whilst taking a break, thou hast found a purse. Thou receives 5 dollars."
+    },
+    {
+        "name": "rain",
+        "target": null,
+        "effect": null,
+        "description": "It’s raining heavily, and thine wheat has gotten wet. Thou lost 1 wheat."
+    },
+    {
+        "name": "drowning",
+        "target": null,
+        "effect": null,
+        "description": "Thou sees a man drowning in the river. Save him: The man thanked thee with 3 dollars. Skip thine next turn. Keep going: Pull another card."
+    },
+    {
+        "name": "fire",
+        "target": null,
+        "effect": null,
+        "description": "A fire has purged thine crop. For the next 3 turns, thou shall not receive wheat at the farm."
     }
 ]
