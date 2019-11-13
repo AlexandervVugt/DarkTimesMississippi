@@ -1,27 +1,17 @@
-import inputScreen, event
-
-currentScene = inputScreen
+import main
 
 def setup():
-    global currentScene
-    
     fullScreen()
-    
-    inputScreen.vars()
-    
-    currentScene = inputScreen
+    main.setup()
     
 def draw():
-    global currentScene
-    
-    background(0, 255, 0)
-    currentScene.draw()
+    main.draw()
     
 def keyTyped():
-    currentScene.keyTyped()
+    main.keyTyped()
     
 def keyPressed():
-    currentScene.keyPressed()
-    
+    main.keyPressed()
+
 def mousePressed():
-    currentScene.mousePressed()
+    main.mousePressed()

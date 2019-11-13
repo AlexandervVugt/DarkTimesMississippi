@@ -1,4 +1,4 @@
-
+import main
 
 def vars():
     global cardFront, cardBack, state, framePointer, fading
@@ -46,3 +46,5 @@ def mousePressed():
         state = "animate"
     elif state == "animate" or state == "fade":
         state = "done"
+    elif state == "done":
+        main.currentScene = main.scenes("turn")

@@ -1,3 +1,5 @@
+import main
+
 def vars():
     global players, input, title, buttonText, buttonX, buttonY, alph
     players = []
@@ -52,4 +54,4 @@ def mousePressed():
     global players, buttonX, buttonY, game
     if mouseX in buttonX and mouseY in buttonY and len(players) >= 2:
         # TODO: Create a game and start the game, switch to game screen.
-        print("start")
+        main.currentScene = main.scenes.get("turn")
