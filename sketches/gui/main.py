@@ -11,7 +11,11 @@ def setup():
     
     currentScene = inputScreen
     #create a map for scenes and their names
-    #scenes = 
+    scenes = {
+              "inputScreen": inputScreen,
+              "event": event,
+              "dice": dice
+              }
     
 def draw():
     global currentScene
