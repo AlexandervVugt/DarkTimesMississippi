@@ -1,4 +1,4 @@
-from Player import Player
+from . import Player
 
 class Game:
     EVENT_SOURCE = ""   #The path to the file that contains the event data
