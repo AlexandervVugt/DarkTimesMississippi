@@ -1,4 +1,4 @@
-from Boat import Boat
+from . import Boat
 
 class Player:
     def __init__(self, name: str, wheat: int = 10, gold: int = 3, boat: Boat = Boat()):

@@ -1,4 +1,4 @@
-from Player import Player
+from . import Player
 import json
 from Event import *
 import random
