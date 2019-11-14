@@ -1,4 +1,5 @@
 import inputScreen, event, dice
+#from ...logic import Game
 
 global currentScene, scenes
 

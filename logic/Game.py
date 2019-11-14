@@ -1,6 +1,6 @@
 from . import Player
+from . import Event
 import json
-from Event import *
 import random
 
 class Game:

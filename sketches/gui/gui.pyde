@@ -1,5 +1,4 @@
 import main
-import sys
 
 def setup():
     fullScreen()
