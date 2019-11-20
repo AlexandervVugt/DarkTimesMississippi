@@ -1,7 +1,7 @@
 from . import Boat
 
 class Player:
-    def __init__(self, name, wheat, gold = 3, boat = Boat()):
+    def __init__(self, name, wheat = 10, gold = 3, boat = Boat()):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
