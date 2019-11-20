@@ -1,12 +1,12 @@
 class Boat:
-    def __init__(self, load: int = 0, capacity: int = 10, sellPrice: int = 2):
+    def __init__(self, load = 0, capacity = 10, sellPrice = 2):
         if load > capacity:
             raise ValueError
         self.__load = load
         self.__capacity = capacity
         self.__sellPrice = sellPrice
 
-    def load(self, amount: int) -> bool:
+    def load(self, amount):
         """
         Adds an amount to the load of this Boat.
         Returns False if the added load would exceed the capacity, True otherwise.
@@ -18,7 +18,7 @@ class Boat:
             self.__load += amount
             return True
         
-    def unload(self, amount: int):
+    def unload(self, amount):
         """
         Subtracts an amount from the load of this Boat.
         If the amount is bigger than the load, the load is set to 0.
@@ -28,29 +28,29 @@ class Boat:
         if self.__load < 0:
             self.__load = 0
         
-    def getLoad(self) -> int:
+    def getLoad(self):
         """Returns the load of this Boat."""
 
         return self.__load
     
-    def getCapacity(self) -> int:
+    def getCapacity(self):
         """Returns the capacity of this Boat."""
 
         return self.__capacity
 
-    def getSellPrice(self) -> int:
+    def getSellPrice(self):
         """Returns the sell price of this Boat."""
 
         return self.__sellPrice
 
-    def equals(self, other) -> bool:
+    def equals(self, other):
         """Returns true if and only if other is a Boat and equal to this Boat."""
 
         if not isinstance(other, Boat):
             return False
         return self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__capacity
 
-    def toString(self) -> str:
+    def toString(self):
         """Returns a human-readable String representation of this Boat"""
 
         template = "Boat:\n\tCapacity: {0:d}\n\tLoad:{1:d}\n\tSell price: {2:d}"

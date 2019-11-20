@@ -1,14 +1,14 @@
 from . import Boat
 
 class Player:
-    def __init__(self, name: str, wheat: int = 10, gold: int = 3, boat: Boat = Boat()):
+    def __init__(self, name, wheat, gold = 3, boat = Boat()):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
         self.__boat = boat
         boat.getLoad()
     
-    def mutateWheat(self, mutation: int = 1) -> bool:
+    def mutateWheat(self, mutation = 1):
         """
         Takes a mutation value as input.
         Adds positive mutations, subtracts negative mutations.
@@ -21,7 +21,7 @@ class Player:
             self.__wheat += mutation
             return True
         
-    def mutateGold(self, mutation: int) -> bool:
+    def mutateGold(self, mutation):
         """
         Takes a mutation value as input.
         Adds positive mutations, subtracts negative mutations.
@@ -35,19 +35,19 @@ class Player:
             return True
 
     
-    def getWheat(self) -> int:
+    def getWheat(self):
         """Returns the amount of wheat this Player posesses."""
 
         return self.__wheat
 
     
-    def getGold(self) -> int:
+    def getGold(self):
         """Returns the amount of gold this Player posesses."""
 
         return self.__gold
 
     
-    def hasBoat(self) -> bool:
+    def hasBoat(self):
         """Returns whether this Player has a Boat or not."""
 
         return self.__boat != None
@@ -57,7 +57,7 @@ class Player:
 
         self.__boat = None
     
-    def assignBoat(self, boat) -> bool:
+    def assignBoat(self, boat):
         """Assigns a Boat to this Player."""
 
         if self.hasBoat:
@@ -66,13 +66,13 @@ class Player:
         return self.__boat == boat
 
     
-    def getName(self) -> str:
+    def getName(self):
         """Returns the name of this Player."""
 
         return self.__name
 
     
-    def toString(self) -> str:
+    def toString(self):
         """Returns a human-readable String representation of this Player."""
 
         template = "Player: {0:s}\n\tGold: {1:d}\n\tWheat: {2:d}\n\t{3:s}"

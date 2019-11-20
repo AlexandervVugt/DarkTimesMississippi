@@ -1,10 +1,10 @@
 import inputScreen, event, dice
-#from ...logic import Game
+from logic import Game
 
 global currentScene, scenes
 
 def setup():
-    global currentScene
+    global currentScene, scenes
     
     inputScreen.vars()
     event.vars()
