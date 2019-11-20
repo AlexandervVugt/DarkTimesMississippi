@@ -48,3 +48,9 @@ def mousePressed():
         state = "done"
     elif state == "done":
         main.currentScene = main.scenes.get("turn")
+        
+def keyTyped():
+    return
+
+def keyPressed():
+    return

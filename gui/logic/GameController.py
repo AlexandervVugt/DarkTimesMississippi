@@ -2,7 +2,7 @@ from . import Game
 from . import Player
 
 class GameController:
-    def __init__(self, game = Game()):
+    def __init__(self, game: Game = Game()):
         global turn
         turn = 0
         self.__game = game

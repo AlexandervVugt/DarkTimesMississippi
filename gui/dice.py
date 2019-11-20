@@ -35,3 +35,9 @@ def roll():
 def mousePressed():
     if mouseX in range(width/2 - 225, width/2 + 225) and mouseY in range(3*height/4 - 50, 3*height/4 + 30):
         roll()
+        
+def keyTyped():
+    return
+
+def keyPressed():
+    return
