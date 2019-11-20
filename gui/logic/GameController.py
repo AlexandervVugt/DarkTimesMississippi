@@ -2,13 +2,13 @@ from . import Game
 from . import Player
 
 class GameController:
-    def __init__(self, game: Game = Game()):
+    def __init__(self, game = Game()):
         global turn
         turn = 0
         self.__game = game
         self.__player = game.getPlayers()[0]
 
-    def nextPlayer(self) -> Player:
+    def nextPlayer(self):
         """Selects the next player who is at turn."""
 
         global turn
