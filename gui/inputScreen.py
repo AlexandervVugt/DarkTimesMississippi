@@ -1,6 +1,6 @@
 import main
-from logic import Game
-from logic import Player
+#from logic import Game
+#from logic import Player
 
 def vars():
     global players, input, title, buttonText, buttonX, buttonY, alph
@@ -56,9 +56,11 @@ def mousePressed():
     global players, buttonX, buttonY, game
     if mouseX in buttonX and mouseY in buttonY and len(players) >= 2:
         # TODO: Create a game and start the game, switch to game screen.
+        '''
         names = players.copy()
         players = []
         for name in names:
             players.append(Player.Player(name))
         main.game = Game.Game(players)
+        '''
         main.currentScene = main.scenes.get("turn")
