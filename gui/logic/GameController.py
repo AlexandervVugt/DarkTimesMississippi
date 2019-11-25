@@ -1,8 +1,8 @@
-from . import Game
-from . import Player
+import logic.Game as Game
+import logic.Player as Player
 
 class GameController:
-    def __init__(self, game = Game()):
+    def __init__(self, game = Game.Game()):
         global turn
         turn = 0
         self.__game = game

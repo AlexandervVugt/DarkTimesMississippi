@@ -1,11 +1,11 @@
-from . import Player
-from . import Event
+import logic.Player as Player
+import logic.Event as Event
 import json
 import random
 
 class Game:
     EVENT_SOURCE = ""   #The path to the file that contains the event data
-    DEFAULT_PLAYERLIST = [Player("Player1"), Player("Player2"), Player("Player3"), Player("Player4")]
+    DEFAULT_PLAYERLIST = [Player.Player("Player1"), Player.Player("Player2"), Player.Player("Player3"), Player.Player("Player4")]
 
     def __init__(self, players = DEFAULT_PLAYERLIST, events = __readEvents(EVENT_SOURCE)):
         self.__players = players
@@ -21,7 +21,7 @@ class Game:
         data = json.loads(jsondata)
 
         for chunk in data:
-            events.append(Event.objectify(*chunk))
+            events.append(Event.objectify(Event, chunk))
 
         return events
 

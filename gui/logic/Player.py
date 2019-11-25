@@ -1,7 +1,7 @@
-from . import Boat
+import logic.Boat as Boat
 
 class Player:
-    def __init__(self, name, wheat = 10, gold = 3, boat = Boat()):
+    def __init__(self, name, wheat = 10, gold = 3, boat = Boat.Boat()):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
