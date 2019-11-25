@@ -1,6 +1,6 @@
 import main
 
-def vars():
+def setup():
     global dice1, dice2, cube
     one = loadImage("one.png")
     two = loadImage("two.png")

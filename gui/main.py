@@ -6,9 +6,9 @@ global currentScene, scenes, game
 def setup():
     global currentScene, scenes
     
-    inputScreen.vars()
-    event.vars()
-    dice.vars()
+    inputScreen.setup()
+    event.setup()
+    dice.setup()
     
     currentScene = inputScreen
     #create a map for scenes and their names

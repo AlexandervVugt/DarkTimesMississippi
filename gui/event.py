@@ -1,6 +1,6 @@
 import main
 
-def vars():
+def setup():
     global cardFront, cardBack, state, framePointer, fading
     cardFront = loadImage("card_front.png")
     cardBack = loadImage("card_back.png")

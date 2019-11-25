@@ -2,7 +2,7 @@ import main
 import logic.Game as Game
 import logic.Player as Player
 
-def vars():
+def setup():
     global names, input, title, buttonText, buttonX, buttonY, alph
     names = []
     input = ""
