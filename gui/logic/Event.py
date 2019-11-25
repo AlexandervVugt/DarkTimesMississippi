@@ -10,10 +10,10 @@ class Event:
 
         return self.__description
 
-    def objectify(self, chunk):
-        """Takes a chunk of data and returns an Event Object related to the data."""
+    # def objectify(self, chunk):
+    #     """Takes a chunk of data and returns an Event Object related to the data."""
 
-        return Event.__init__(Event, chunk.name, chunk.target, chunk.effect, chunk.description)
+    #     return Event.__init__(Event, chunk.name, chunk.target, chunk.effect, chunk.description)
 
     def equals(self, other):
         """Takes another Object and returns True iff other is an Event and equal to this Event."""

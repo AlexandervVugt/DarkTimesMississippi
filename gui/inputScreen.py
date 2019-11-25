@@ -1,6 +1,6 @@
 import main
-#from logic import Game
-#from logic import Player
+import logic.Game as Game
+import logic.Player as Player
 
 def vars():
     global players, input, title, buttonText, buttonX, buttonY, alph
