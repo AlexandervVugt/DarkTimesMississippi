@@ -1,7 +1,7 @@
 import inputScreen, event, dice
 import logic.Game as Game
 
-global currentScene, scenes#, game
+global currentScene, scenes, game
 
 def setup():
     global currentScene, scenes

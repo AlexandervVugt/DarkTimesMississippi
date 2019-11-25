@@ -36,7 +36,7 @@ def draw():
         textAlign(CENTER)
         textSize(32)
         fill(0)
-        cardText = "Je boot zinkt doei"
+        cardText = "je boot zinkt doei" #main.game.randEvent().toString()
         text(cardText, 0, 0)
         
 def mousePressed():
