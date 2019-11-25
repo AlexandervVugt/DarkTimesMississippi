@@ -4,7 +4,7 @@ import json
 import random
 
 class Game:
-    EVENT_SOURCE = ""   #The path to the file that contains the event data
+    EVENT_SOURCE = "../sources/event_data.json"   #The path to the file that contains the event data
     DEFAULT_PLAYERLIST = [Player.Player("Player1"), Player.Player("Player2"), Player.Player("Player3"), Player.Player("Player4")]
 
     def __init__(self, players = DEFAULT_PLAYERLIST, sourcefile = EVENT_SOURCE):

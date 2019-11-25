@@ -48,7 +48,7 @@ def keyPressed():
         names.append(input)
         input = ""
         if len(names) == 4:
-            title = "names:"
+            title = "Players:"
     elif key == BACKSPACE:
         input = input[:-1]
         
