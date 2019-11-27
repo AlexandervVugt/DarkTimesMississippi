@@ -28,26 +28,26 @@ def draw():
         tint(255, 255 - fading)
         image(cardBack, -(cardBack.width/2), -(cardBack.height/2))
         tint(255, fading)
-        image(cardFront, -(cardFront.width/2), -(cardBack.height/2))
+        image(cardFront, -(cardFront.width/2), -(cardFront.height/2))
         if fading >= 255:
             state = "done"
         fading += 255/60
     elif state == "done":
-        image(cardFront, -(cardFront.width/2), -(cardBack.height/2))
-        textAlign(CENTER)
+        image(cardFront, -(cardFront.width/2), -(cardFront.height/2))
+        textAlign(CENTER, CENTER)
         textSize(32)
         fill(0)
         # cardText = main.game.randEvent().toString()
-        text(cardText, 0, 0)
+        text(cardText, -(cardFront.width/4), -(cardFront.height/4), cardFront.width/2, cardFront.height/2)
         
 def mousePressed():
     global state, framePointer, cardText
     
     if state == "before":
         framePointer = frameCount
+        cardText = main.game.randEvent().toString()
         state = "animate"
     elif state == "animate" or state == "fade":
-        cardText = main.game.randEvent().toString()
         state = "done"
     elif state == "done":
         setup()
