@@ -1,10 +1,11 @@
 import main
 
 def setup():
-    global blueText, redText
+    global blueText, redText, currentPlayer
     
     blueText = 'Click on the Blue button to draw event card'
     redText = 'Click on the red button to throw the dices'
+    currentPlayer = 'Current Player:'
     
 def draw():
     global blueText, redText
@@ -21,7 +22,12 @@ def draw():
     square(600, 460, 150)
     fill (150, 0, 0)
     textSize(50)
-    text('DarkTimesMisissipi',700,70)
+    text('DarkTimesMississippi',700,70)
+    fill(211, 211, 211)
+    rect(1179, -1, 201, 301)
+    textSize(16)
+    fill(0, 0, 0)
+    text(currentPlayer, 1280, 100)
     
 def mousePressed():
     global main
