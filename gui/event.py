@@ -47,6 +47,7 @@ def mousePressed():
     elif state == "animate" or state == "fade":
         state = "done"
     elif state == "done":
+        setup()
         main.currentScene.pop()
         
 def keyTyped():

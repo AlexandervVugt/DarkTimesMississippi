@@ -39,6 +39,7 @@ def mousePressed():
         if active:
             roll()
         else:
+            setup()
             main.currentScene.pop()
         
 def keyTyped():
