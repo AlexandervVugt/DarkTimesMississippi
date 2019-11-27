@@ -21,8 +21,9 @@ class Game:
         data = json.loads(jsondata)
 
         for chunk in data:
-            events.append(Event.Event(*chunk.values()))
-
+            chunk = chunk.values()
+            chunk.reverse()
+            events.append(Event.Event(*chunk))
         return events
 
     def getPlayers(self):

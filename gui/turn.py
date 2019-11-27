@@ -35,3 +35,9 @@ def mousePressed():
         elif mouseY in range(460, 610):
             main.currentScene.append(main.scenes.get("event"))
             # print('klikblauw')
+
+def keyPressed():
+    return
+
+def keyTyped():
+    return
