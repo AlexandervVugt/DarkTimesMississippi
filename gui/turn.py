@@ -28,10 +28,10 @@ def mousePressed():
     
     # print("x: " + str(mouseX))
     # print("y: " + str(mouseY))
-    if mouseX in range(380,530):
-        if mouseY in range(150,300):
+    if mouseX in range(600,750):
+        if mouseY in range(190,340):
             main.currentScene.append(main.scenes.get("dice"))
             # print('klikrood')
-        elif mouseY in range(430, 580):
+        elif mouseY in range(460, 610):
             main.currentScene.append(main.scenes.get("event"))
             # print('klikblauw')
