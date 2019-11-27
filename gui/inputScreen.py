@@ -65,4 +65,5 @@ def mousePressed():
         # not fully implemented
         # main.game = Game.Game(players)
         print(4)
-        main.currentScene = main.scenes.get("turn")
+        main.currentScene.pop()
+        main.currentScene.append(main.scenes.get("turn"))
