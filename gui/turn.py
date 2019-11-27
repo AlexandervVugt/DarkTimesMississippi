@@ -12,16 +12,16 @@ def draw():
     background(0, 255, 0)
     textSize(24)
     fill (178, 57, 91)
-    text(redText, 230, 130)
+    text(redText, 700, 150)
     fill (255, 0, 0)
-    square(380, 170, 150)
+    square(600, 190, 150)
     fill (0, 0, 255)
-    text(blueText, 230, 390)
+    text(blueText, 700, 420)
     fill (0, 0, 255)
-    square(380, 430, 150)
+    square(600, 460, 150)
     fill (150, 0, 0)
     textSize(50)
-    text('DarkTimesMisissipi',230,70)
+    text('DarkTimesMisissipi',700,70)
     
 def mousePressed():
     global main
