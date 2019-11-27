@@ -1,7 +1,7 @@
 import main
 
 def setup():
-    fullScreen()
+    size(1440, 900)
     main.setup()
     
 def draw():

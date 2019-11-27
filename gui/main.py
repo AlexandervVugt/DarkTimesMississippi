@@ -1,4 +1,4 @@
-import inputScreen, event, dice
+import inputScreen, event, dice, turn
 import logic.Game as Game
 
 global currentScene, scenes, game
@@ -6,17 +6,22 @@ global currentScene, scenes, game
 def setup():
     global currentScene, scenes
     
-    inputScreen.setup()
-    event.setup()
-    dice.setup()
+    # inputScreen.setup()
+    # event.setup()
+    # dice.setup()
+    # turn.setup()
     
     currentScene = inputScreen
     #create a map for scenes and their names
     scenes = {
               "inputScreen": inputScreen,
               "event": event,
-              "dice": dice
+              "dice": dice,
+              "turn": turn
               }
+    
+    for scene in scenes.values():
+        scene.setup()
     
 def draw():
     global currentScene
