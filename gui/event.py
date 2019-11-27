@@ -9,7 +9,8 @@ def setup():
     fading = 0
     
 def draw():
-    global cardFront, cardBack, state, framePointer, fading
+    global cardFront, cardBack, state, framePointer, fading, cardText
+    
     background(0, 255, 0)
     translate(width/2, height/2)
     if state == "before":
@@ -36,15 +37,17 @@ def draw():
         textAlign(CENTER)
         textSize(32)
         fill(0)
-        cardText = "je boot zinkt doei" #main.game.randEvent().toString()
+        # cardText = main.game.randEvent().toString()
         text(cardText, 0, 0)
         
 def mousePressed():
-    global state, framePointer
+    global state, framePointer, cardText
+    
     if state == "before":
         framePointer = frameCount
         state = "animate"
     elif state == "animate" or state == "fade":
+        cardText = main.game.randEvent().toString()
         state = "done"
     elif state == "done":
         setup()

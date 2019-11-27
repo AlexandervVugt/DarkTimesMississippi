@@ -21,7 +21,7 @@ class Game:
         data = json.loads(jsondata)
 
         for chunk in data:
-            events.append(Event.Event(*chunk))
+            events.append(Event.Event(*chunk.values()))
 
         return events
 
