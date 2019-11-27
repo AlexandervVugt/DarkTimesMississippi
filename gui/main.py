@@ -1,7 +1,8 @@
 import inputScreen, event, dice, turn
 import logic.Game as Game
+import logic.GameController as GameController
 
-global currentScene, scenes, game
+global currentScene, scenes, game, gameController
 
 def setup():
     global currentScene, scenes
@@ -37,3 +38,14 @@ def keyPressed():
     
 def mousePressed():
     currentScene[-1].mousePressed()
+    
+def createGame(players):
+    global game
+    
+    game = Game.Game(players)
+    
+def createController():
+    global game, gameController
+    
+    gameController = GameController.GameController(game)
+    
