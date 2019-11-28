@@ -1,5 +1,5 @@
 import unittest
-import logic.Boat as Boat
+import Boat as Boat
 
 class BoatTest(unittest.TestCase):
     def load_negative(self):

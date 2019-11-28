@@ -1,4 +1,4 @@
-import logic.Boat as Boat
+import Boat as Boat
 
 class Player:
     def __init__(self, name, wheat = 10, gold = 3, boat = Boat.Boat()):
