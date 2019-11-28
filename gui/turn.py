@@ -1,11 +1,10 @@
 import main
 
 def setup():
-    global blueText, redText, currentPlayer
+    global blueText, redText
     
     blueText = 'Click on the Blue button to draw event card'
     redText = 'Click on the red button to throw the dices'
-    currentPlayer = 'Current Player: {}'.format(main.gameController.getPlayer().getName())
     
 def draw():
     global blueText, redText
@@ -47,3 +46,9 @@ def keyPressed():
 
 def keyTyped():
     return
+
+def refresh():
+    global currentPlayer
+    
+    player = main.gameController.getPlayer()
+    currentPlayer = 'Current Player: {}\n'.format(player.getName())
