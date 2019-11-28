@@ -5,7 +5,7 @@ def setup():
     
     blueText = 'Click on the Blue button to draw event card'
     redText = 'Click on the red button to throw the dices'
-    currentPlayer = 'Current Player:'
+    currentPlayer = 'Current Player: {}'.format(main.gameController.getPlayer().getName())
     
 def draw():
     global blueText, redText
