@@ -12,7 +12,10 @@ class Boat:
         Returns False if the added load would exceed the capacity, True otherwise.
         """
 
-        if amount + self.__load > self.__capacity:
+        if amount < 0:
+            self.unload(-amount)
+            return True
+        elif amount + self.__load > self.__capacity:
             return False
         else:
             self.__load += amount
