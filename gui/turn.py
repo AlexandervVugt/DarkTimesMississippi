@@ -22,11 +22,13 @@ def draw():
     fill (150, 0, 0)
     textSize(50)
     text('DarkTimesMississippi',700,70)
+    
     fill(211, 211, 211)
     rect(1179, -1, 201, 301)
     textSize(16)
     fill(0, 0, 0)
-    text(currentPlayer, 1250, 20)
+    textAlign(LEFT)
+    text(currentPlayer, 1190, 20)
     
 def mousePressed():
     global main
@@ -51,4 +53,4 @@ def refresh():
     global currentPlayer
     
     player = main.gameController.getPlayer()
-    currentPlayer = 'Current Player: {}\n'.format(player.getName())
+    currentPlayer = 'Current Player: \n{}'.format(player.getName())
