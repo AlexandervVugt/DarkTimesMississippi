@@ -9,6 +9,7 @@ def setup():
 def draw():
     global blueText, redText
     
+    textAlign(CENTER, CENTER)
     background(0, 255, 0)
     textSize(24)
     fill (178, 57, 91)
@@ -27,7 +28,7 @@ def draw():
     rect(1179, -1, 201, 301)
     textSize(16)
     fill(0, 0, 0)
-    textAlign(LEFT)
+    textAlign(LEFT, CENTER)
     text(currentPlayer, 1190, 20)
     
 def mousePressed():
