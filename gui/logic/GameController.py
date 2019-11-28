@@ -9,6 +9,11 @@ class GameController:
         self.__player = game.getPlayers()[0]
         self.__turninfo = None
 
+    def getPlayer(self):
+        """Returns the current player."""
+        
+        return self.__player
+
     def nextPlayer(self):
         """Selects the next player who is at turn."""
 
@@ -18,7 +23,10 @@ class GameController:
         return players[index]
 
     def startTurn(self, player):
-        """Performs actions on the start of the players turn."""
+        """Performs actions on the start of the players turn. Uses the current player if None is passed as argument."""
+
+        if player == None:
+            player = self.__player
 
         player.mutateWheat()
         self.__turninfo = Turn.Turn()

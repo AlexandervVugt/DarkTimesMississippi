@@ -1,5 +1,4 @@
 import main
-import logic.Game as Game
 import logic.Player as Player
 
 def setup():
@@ -55,15 +54,11 @@ def keyPressed():
 def mousePressed():
     global names, buttonX, buttonY, game
     if mouseX in buttonX and mouseY in buttonY and len(names) >= 2:
-        # TODO: Create a game and start the game, switch to game screen.
-        print(1)
         players = []
-        print(2)
         for name in names:
             players.append(Player.Player(name))
-        print(3)
-        # not fully implemented
-        main.game = Game.Game(players)
-        print(4)
+        main.createGame(players)
+        main.createController()
+        main.gameController.startTurn(None)
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("turn"))
