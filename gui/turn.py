@@ -27,7 +27,7 @@ def draw():
     rect(1179, -1, 201, 301)
     textSize(16)
     fill(0, 0, 0)
-    text(currentPlayer, 1280, 100)
+    text(currentPlayer, 1250, 20)
     
 def mousePressed():
     global main
