@@ -49,7 +49,7 @@ class BoatTest(unittest.TestCase):
         self.assertFalse(boat.equals(instance))
 
     def test_equals_true(self):
-        instance = Boat.Boat()
+        instance = Boat.Boat(5)
         ret = boat.equals(instance)
         self.assertTrue(ret)
 

@@ -54,12 +54,6 @@ class Boat:
 
         if not isinstance(other, Boat):
             return False
-        
-        print(self..getLoad() == other.getLoad())
-        print(self.__capacity == other.__load)
-        print(self.__load == other.__load)
-        print(self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__sellPrice)
-
         return self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__sellPrice
 
     def toString(self):
