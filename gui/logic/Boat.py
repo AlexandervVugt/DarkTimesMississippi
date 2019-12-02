@@ -28,7 +28,7 @@ class Boat:
         """
 
         if amount < 0:
-            load(amount)
+            self.load(-amount)
             return
         self.__load -= amount
         if self.__load < 0:
@@ -54,10 +54,16 @@ class Boat:
 
         if not isinstance(other, Boat):
             return False
-        return self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__capacity
+        
+        print(self..getLoad() == other.getLoad())
+        print(self.__capacity == other.__load)
+        print(self.__load == other.__load)
+        print(self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__sellPrice)
+
+        return self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__sellPrice
 
     def toString(self):
         """Returns a human-readable String representation of this Boat"""
 
-        template = "Boat:\n\tCapacity: {0:d}\n\tLoad:{1:d}\n\tSell price: {2:d}"
+        template = "Boat:\n\tCapacity: {0:d}\n\tLoad: {1:d}\n\tSell price: {2:d}"
         return template.format(self.__capacity, self.__load, self.__sellPrice)
