@@ -27,6 +27,9 @@ class Boat:
         If the amount is bigger than the load, the load is set to 0.
         """
 
+        if amount < 0:
+            load(amount)
+            return
         self.__load -= amount
         if self.__load < 0:
             self.__load = 0
