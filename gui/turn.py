@@ -45,7 +45,7 @@ def mousePressed():
                 main.gameController.nextPlayer()
                 main.gameController.startTurn(None)
                 refresh()
-        elif mouseY in range(460, 610):
+        elif mouseY in range(460, 610) and rolled:
             main.currentScene.append(main.scenes.get("event"))
             # print('klikblauw')
 
