@@ -28,11 +28,16 @@ def draw():
     square(width-100, height-100, 100)
     
     fill(211, 211, 211)
-    rect(width-300, 0, 300, 500)
-    textSize(32)
+    rect(width-350, 0, 350, 310)
+    textSize(25)
     fill(0, 0, 0)
     textAlign(TOP)
-    text(player.toString(), width-300, 0, width, 500)
+    text(player.toString(), width-350, 0, width, 500)
+    fill(255, 255, 255)
+    rect(1295, 42, 60, 20)
+    textSize(15)
+    fill(0, 0, 0)
+    text('EDIT', 1309, 59)
     
 def mousePressed():
     global main
