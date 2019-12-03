@@ -28,6 +28,17 @@ def draw():
         #do something
         something = 'something'
     
+    for i in range 1:
+        if len(main.game.getPlayers()) == 2
+        print (square1,square2)
+        if len(main.game.getPlayers()) == 3
+        print (square1,square2,square3)
+        if len(main.game.getPlayers()) == 4
+        print (square1,square2,square3,square4)
+        
+    
+    
+    
     textSize(24)
     rolled = main.gameController.getTurnInfo().getSteps() != -1
     if not rolled:
