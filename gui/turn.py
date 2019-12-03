@@ -29,7 +29,14 @@ def draw():
     textSize(16)
     fill(0, 0, 0)
     textAlign(LEFT, CENTER)
-    text(currentPlayer, 1190, 20)
+    text(currentPlayer, 1190, 30)
+    
+    textSize(16)
+    fill(0, 0, 0)
+    textAlign(LEFT, CENTER)
+    text(cash, 1190, 80)
+    
+    textSize(16) 
     
 def mousePressed():
     global main
@@ -80,8 +87,9 @@ def endTurnButton():
     square(600, 190, 150)
 
 def refresh():
-    global currentPlayer
+    global currentPlayer, cash
     
     player = main.gameController.getPlayer()
     currentPlayer = 'Current Player: \n{}'.format(player.getName())
     print('Refreshed for player: ' + player.getName())
+    cash = 'Cash: \n{}' 
