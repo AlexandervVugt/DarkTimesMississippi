@@ -34,13 +34,6 @@ def draw():
     textAlign(TOP)
     text(player.toString(), width-300, 0, width, 500)
     
-    textSize(16)
-    fill(0, 0, 0)
-    textAlign(LEFT, CENTER)
-    text(cash, 1190, 80)
-    
-    textSize(16) 
-    
 def mousePressed():
     global main
     
