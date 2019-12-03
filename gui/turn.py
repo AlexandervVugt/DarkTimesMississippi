@@ -1,4 +1,4 @@
-import main
+import main, popup_modify, popup_confirm
 
 def setup():
     global eventText, diceText, endText
@@ -8,7 +8,7 @@ def setup():
     endText = 'END TURN'
     
 def draw():
-    global rolled
+    global rolled, player
     
     textAlign(CENTER, CENTER)
     background(0, 255, 0)
@@ -23,13 +23,16 @@ def draw():
     else:
         endTurnButton()
         eventButton()
+        
+    fill(255)
+    square(width-100, height-100, 100)
     
     fill(211, 211, 211)
-    rect(1179, -1, 201, 301)
-    textSize(16)
+    rect(width-300, 0, 300, 500)
+    textSize(32)
     fill(0, 0, 0)
-    textAlign(LEFT, CENTER)
-    text(currentPlayer, 1190, 20)
+    textAlign(TOP)
+    text(player.toString(), width-300, 0, width, 500)
     
 def mousePressed():
     global main
@@ -48,6 +51,9 @@ def mousePressed():
         elif mouseY in range(460, 610) and rolled:
             main.currentScene.append(main.scenes.get("event"))
             # print('klikblauw')
+    elif mouseX in range(width-100, width) and mouseY in range(height-100, height):
+        popup_modify.action = main.gameController.getPlayer().mutateGold
+        main.currentScene.append(main.scenes.get("popup_modify"))
 
 def keyPressed():
     return
@@ -80,8 +86,6 @@ def endTurnButton():
     square(600, 190, 150)
 
 def refresh():
-    global currentPlayer
+    global player
     
     player = main.gameController.getPlayer()
-    currentPlayer = 'Current Player: \n{}'.format(player.getName())
-    print('Refreshed for player: ' + player.getName())
