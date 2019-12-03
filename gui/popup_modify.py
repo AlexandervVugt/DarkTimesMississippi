@@ -7,7 +7,7 @@ def setup():
     
     title = "Enter the amount to modify, then press the <ENTER> key to confirm."
     userIn = ''
-    num = '0123456789'
+    num = '-0123456789'
     
 def draw():
     global title

@@ -1,4 +1,4 @@
-import main, popup_modify
+import main, popup_modify, popup_confirm
 
 def setup():
     global eventText, diceText, endText
