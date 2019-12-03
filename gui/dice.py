@@ -2,6 +2,7 @@ import main
 
 def setup():
     global dice1, dice2, cube, active
+    
     one = loadImage("one.png")
     two = loadImage("two.png")
     three = loadImage("three.png")
@@ -15,6 +16,7 @@ def setup():
     
 def draw():
     global dice1, dice2
+    
     background(0, 255, 0)
     square(width/2 - 200, height/2 - 75, 150)
     square(width/2 + 50, height/2 - 75, 150)
@@ -29,10 +31,14 @@ def draw():
     fill(255)
     
 def roll():
-    global dice1, dice2, cube, active
+    global dice1, dice2, cube, active, result
+    
     active = False
-    dice1 = cube[int(random(0, len(cube)))]
-    dice2 = cube[int(random(0, len(cube)))]
+    res1 = int(random(len(cube) + 1))
+    res2 = int(random(len(cube) + 1))
+    dice1 = cube[res1 - 1]
+    dice2 = cube[res2 - 1]
+    result = res1 + res2
     
 def mousePressed():
     if mouseX in range(width/2 - 225, width/2 + 225) and mouseY in range(3*height/4 - 50, 3*height/4 + 30):
@@ -40,6 +46,7 @@ def mousePressed():
             roll()
         else:
             setup()
+            main.gameController.getTurnInfo().setSteps(result)
             main.currentScene.pop()
         
 def keyTyped():

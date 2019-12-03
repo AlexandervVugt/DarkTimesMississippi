@@ -21,7 +21,7 @@ def draw():
     if not rolled:
         diceButton()
     else:
-        endTurnbutton()
+        endTurnButton()
         eventButton()
     
     fill(211, 211, 211)
@@ -41,6 +41,10 @@ def mousePressed():
             if not rolled:
                 main.currentScene.append(main.scenes.get("dice"))
                 # print('klikrood')
+            else:
+                main.gameController.nextPlayer()
+                main.gameController.startTurn(None)
+                refresh()
         elif mouseY in range(460, 610):
             main.currentScene.append(main.scenes.get("event"))
             # print('klikblauw')
@@ -54,7 +58,7 @@ def keyTyped():
 def diceButton():
     global diceText
     
-    fill (178, 57, 91)
+    fill (255, 0, 0)
     text(diceText, 700, 150)
     fill (255, 0, 0)
     square(600, 190, 150)
@@ -70,11 +74,14 @@ def eventButton():
 def endTurnButton():
     global endText
     
-    fill(178, 57, 91)
+    fill(255, 0, 0)
     text(endText, 700, 150)
+    fill (255, 0, 0)
+    square(600, 190, 150)
 
 def refresh():
     global currentPlayer
     
     player = main.gameController.getPlayer()
     currentPlayer = 'Current Player: \n{}'.format(player.getName())
+    print('Refreshed for player: ' + player.getName())
