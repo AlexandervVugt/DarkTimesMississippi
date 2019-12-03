@@ -20,7 +20,8 @@ class GameController:
         self.__turn += 1
         players = self.__game.getPlayers()
         index = self.__turn % len(players)
-        return players[index]
+        self.__player = players[index]
+        return self.__player
 
     def startTurn(self, player):
         """Performs actions on the start of the players turn. Uses the current player if None is passed as argument."""

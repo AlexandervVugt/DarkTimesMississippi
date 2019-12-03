@@ -1,4 +1,4 @@
-import main
+import main, turn
 import logic.Player as Player
 
 def setup():
@@ -61,4 +61,5 @@ def mousePressed():
         main.createController()
         main.gameController.startTurn(None)
         main.currentScene.pop()
+        turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
