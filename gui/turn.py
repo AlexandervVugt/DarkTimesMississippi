@@ -15,29 +15,6 @@ def draw():
     fill (150, 0, 0)
     textSize(50)
     text('DarkTimesMississippi',700,70)
-
-    #Square Player 1
-    square1 = square(1, 1, 200);
-    #Square Player 2
-    square2 = square(1, 210, 200);
-    #Square Player 3
-    square3 = square(1, 420, 200);
-    #Square Player 4
-    square4 = square(1, 630, 200);
-    # for i in range(4):
-    #     #do something
-    #     something = 'something'
-    
-    for i in range 1:
-        if len(main.game.getPlayers()) == 2
-        print (square1,square2)
-        if len(main.game.getPlayers()) == 3
-        print (square1,square2,square3)
-        if len(main.game.getPlayers()) == 4
-        print (square1,square2,square3,square4)
-        
-    
-    
     
     textSize(24)
     rolled = main.gameController.getTurnInfo().getSteps() != -1
