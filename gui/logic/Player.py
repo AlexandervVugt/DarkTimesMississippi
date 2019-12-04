@@ -1,11 +1,11 @@
 import logic.Boat as Boat
 
 class Player:
-    def __init__(self, name, wheat = 10, gold = 3, boat = Boat.Boat()):
+    def __init__(self, name, wheat = 10, gold = 3, boat = None):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
-        self.__boat = boat
+        self.__boat = boat if boat != None else Boat.Boat()
         # boat.getLoad()
     
     def mutateWheat(self, mutation = 1):
