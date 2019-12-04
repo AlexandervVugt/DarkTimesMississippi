@@ -8,7 +8,7 @@ def setup():
     endText = 'END TURN'
     
 def draw():
-    global rolled, player
+    global rolled
     
     textAlign(CENTER, CENTER)
     background(0, 255, 0)
@@ -53,9 +53,33 @@ def mousePressed():
             main.currentScene.append(main.scenes.get("event"))
             # print('klikblauw')
     elif mouseX in range(width-100, width) and mouseY in range(height-100, height):
-        popup_modify.action = main.gameController.getPlayer().mutateGold
+        popup_modify.action = player.mutateGold
         main.currentScene.append(main.scenes.get("popup_modify"))
-
+    elif mouseX in range(1300, 1345):
+        if player.hasBoat():
+            if mouseY in range(120, 140):
+                # sell button mechanism
+                # popup_confirm.action = player.sellBoat
+                # main.currentScene.append(main.scenes.get("popup_confirm"))
+                a = 1
+            elif mouseY in range(195, 215):
+                # load button
+                popup_modify.action = player.getBoat().load
+                main.currentScene.append(main.scenes.get("popup_modify"))
+        elif mouseY in range(45, 65):
+            # wheat button
+            popup_modify.action = player.mutateWheat
+            main.currentScene.append(main.scenes.get("popup_modify"))
+        elif mouseY in range(80, 100):
+            # gold button
+            popup_modify.action = player.mutateGold
+            main.currentScene.append(main.scenes.get("popup_modify"))
+    elif mouseX in range(1350, 1425) and mouseY in range(120, 140) and player.hasBoat():
+        # delete boat button
+        # popup_confirm.action = player.destroyBoat
+        # main.currentScene.append(main.scenes.get("popup_confirm"))
+        a = 1
+            
 def keyPressed():
     return
 
