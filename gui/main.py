@@ -1,4 +1,4 @@
-import inputScreen, event, dice, turn, popup_modify
+import inputScreen, event, dice, turn, popup_modify, popup_confirm
 import logic.Game as Game
 import logic.GameController as GameController
 
@@ -19,7 +19,8 @@ def setup():
               "event": event,
               "dice": dice,
               "turn": turn,
-              "popup_modify": popup_modify
+              "popup_modify": popup_modify,
+              "popup_confirm": popup_confirm
               }
     
     for scene in scenes.values():
