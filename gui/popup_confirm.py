@@ -8,6 +8,7 @@ def setup():
     title = "Are you sure?"
     confirm_text = "CONFIRM"
     cancel_text = "CANCEL"
+    action = None
     
 def draw():
     global title, confirm_text, cancel_text
@@ -37,7 +38,9 @@ def mousePressed():
         if mouseX in range(width/4, width/2):
             #confirm
             action()
+            setup()
             main.currentScene.pop()
         elif mouseX in range(width/2, 3*width/4):
             #cancel
+            setup()
             main.currentScene.pop()

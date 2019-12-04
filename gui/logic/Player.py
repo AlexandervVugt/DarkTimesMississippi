@@ -57,7 +57,7 @@ class Player:
 
         self.__boat = None
     
-    def assignBoat(self, boat):
+    def assignBoat(self, boat = Boat.Boat()):
         """Assigns a Boat to this Player."""
 
         if self.hasBoat:
