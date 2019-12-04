@@ -5,7 +5,7 @@ def setup():
     global names, input, title, buttonText, buttonX, buttonY, alph
     names = []
     input = ""
-    title = "Please enter the players of the names who will play."
+    title = "Please enter the names of the players who will play."
     buttonText = "Start game"
     buttonX = range(3*width/8, 3*width/8 + width/4)
     buttonY = range(3*height/4, 3*height/4 + 100)
