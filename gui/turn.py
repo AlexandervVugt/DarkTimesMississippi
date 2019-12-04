@@ -24,9 +24,9 @@ def draw():
     square3 = square(1, 420, 200);
     #Square Player 4
     square4 = square(1, 630, 200);
-    for i in range(4):
-        #do something
-        something = 'something'
+    # for i in range(4):
+    #     #do something
+    #     something = 'something'
     
     for i in range 1:
         if len(main.game.getPlayers()) == 2
@@ -56,11 +56,7 @@ def draw():
     fill(0, 0, 0)
     textAlign(TOP)
     text(player.toString(), width-350, 0, width, 500)
-    fill(255, 255, 255)
-    rect(1295, 42, 60, 20)
-    textSize(15)
-    fill(0, 0, 0)
-    text('EDIT', 1309, 59)
+    buttons()
     
 def mousePressed():
     global main
@@ -112,6 +108,34 @@ def endTurnButton():
     text(endText, 700, 150)
     fill (255, 0, 0)
     square(600, 190, 150)
+    
+def buttons():
+    global player
+
+    editButton(45.0)
+    editButton(80.0)
+    if player.hasBoat():
+        editButton(195.0)
+        
+        fill(255, 255, 255)
+        rect(1300, 120, 45, 20)
+        textSize(15)
+        fill(0, 0, 0)
+        text('SELL', 1305, 120, 1340, 140)
+        
+        fill(255, 255, 255)
+        rect(1350, 120, 75, 20)
+        textSize(15)
+        fill(0, 0, 0)
+        text('DESTROY', 1355, 120, 1420, 140)
+        
+    
+def editButton(y):
+    fill(255, 255, 255)
+    rect(1300, y, 45, 20)
+    textSize(15)
+    fill(0, 0, 0)
+    text('EDIT', 1305, y, 1340, y+20)
 
 def refresh():
     global player
