@@ -1,21 +1,51 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText
+    global eventText, diceText, endText, bg
     
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
     endText = 'END TURN'
+    bg = loadImage("background.png")
     
 def draw():
     global rolled
     
     textAlign(CENTER, CENTER)
-    background(0, 255, 0)
+    image(bg, 0, 0)
     fill (150, 0, 0)
     textSize(50)
     text('DarkTimesMississippi',700,70)
-    
+
+    playerlist = main.game.getPlayers()
+    for i in range(len(playerlist)+1):
+        if i == 1:
+            fill (211, 211, 211)
+            square(1, 1, 200);
+            textSize(15)
+            fill (0, 0, 0)
+            text(playerlist[i-1].toString(), 2, 1, 200, 200)
+        if i == 2:
+            fill (211, 211, 211)
+            square(1, 210, 200);
+            textSize(15)
+            fill (0, 0, 0)
+            text(playerlist[i-1].toString(), 2, 100, 200, 420)
+        if i == 3:
+            fill (211, 211, 211)
+            square(1, 420, 200);
+            textSize(15)
+            fill (0, 0, 0)
+            text(playerlist[i-1].toString(), 2, 200, 200, 640)
+        if i == 4:
+            fill (211, 211, 211)
+            square(1, 630, 200);
+            textSize(15)
+            fill (0, 0, 0)
+            text(playerlist[i-1].toString(), 2, 300, 200, 860)
+
+                
+        
     textSize(24)
     rolled = main.gameController.getTurnInfo().getSteps() != -1
     if not rolled:

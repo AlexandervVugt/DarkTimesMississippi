@@ -5,7 +5,8 @@ import logic.GameController as GameController
 global currentScene, scenes, game, gameController
 
 def setup():
-    global currentScene, scenes
+    global currentScene, scenes, bg
+    bg = loadImage("background.png")
     
     # currentScene is used like a stack
     # to nest a scene, use append(<scene you want to show>) to change the scene
@@ -28,9 +29,9 @@ def setup():
         scene.setup()
     
 def draw():
+    image(bg, 0, 0)
     global currentScene
     
-    background(0, 255, 0)
     currentScene[-1].draw()
     
 def keyTyped():
