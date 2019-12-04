@@ -60,9 +60,12 @@ class Player:
     def assignBoat(self, boat = Boat.Boat()):
         """Assigns a Boat to this Player."""
 
-        if self.hasBoat:
+        print("creating boat")
+
+        if self.hasBoat():
             return False
         self.__boat = boat
+        print(self.__boat.toString())
         return self.__boat == boat
 
     def getBoat(self):
