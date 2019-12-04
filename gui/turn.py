@@ -33,7 +33,7 @@ def draw():
     buttons()
     
 def mousePressed():
-    global main
+    global main, player
     
     # print("x: " + str(mouseX))
     # print("y: " + str(mouseY))
@@ -72,7 +72,7 @@ def mousePressed():
         popup_confirm.action = player.destroyBoat
         main.currentScene.append(main.scenes.get("popup_confirm"))
     if not player.hasBoat() and mouseX in range(1300, 1365) and mouseY in range(120, 140):
-        player.assignBoat()
+        main.gameController.getPlayer().assignBoat()
         main.gameController.nextPlayer()
         main.gameController.startTurn(None)
         refresh()
