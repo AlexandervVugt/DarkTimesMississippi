@@ -15,7 +15,20 @@ def draw():
     fill (150, 0, 0)
     textSize(50)
     text('DarkTimesMississippi',700,70)
+
     
+    for i in range(len(main.game.getPlayers())+1):
+        if i == 1:
+            square(1, 1, 200);
+        if i == 2:
+            square(1, 210, 200);
+        if i == 3:
+            square(1, 420, 200);
+        if i == 4:
+            square(1, 630, 200);
+
+                
+        
     textSize(24)
     rolled = main.gameController.getTurnInfo().getSteps() != -1
     if not rolled:
