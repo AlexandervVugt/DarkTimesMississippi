@@ -15,7 +15,20 @@ def draw():
     fill (150, 0, 0)
     textSize(50)
     text('DarkTimesMississippi',700,70)
+
     
+    for i in range(len(main.game.getPlayers())+1):
+        if i == 1:
+            square(1, 1, 200);
+        if i == 2:
+            square(1, 210, 200);
+        if i == 3:
+            square(1, 420, 200);
+        if i == 4:
+            square(1, 630, 200);
+
+                
+        
     textSize(24)
     rolled = main.gameController.getTurnInfo().getSteps() != -1
     if not rolled:
@@ -33,7 +46,7 @@ def draw():
     buttons()
     
 def mousePressed():
-    global main, player
+    global main
     
     # print("x: " + str(mouseX))
     # print("y: " + str(mouseY))
@@ -72,7 +85,7 @@ def mousePressed():
         popup_confirm.action = player.destroyBoat
         main.currentScene.append(main.scenes.get("popup_confirm"))
     if not player.hasBoat() and mouseX in range(1300, 1365) and mouseY in range(120, 140):
-        main.gameController.getPlayer().assignBoat()
+        player.assignBoat()
         main.gameController.nextPlayer()
         main.gameController.startTurn(None)
         refresh()

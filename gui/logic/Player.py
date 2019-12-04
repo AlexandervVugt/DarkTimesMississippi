@@ -1,11 +1,11 @@
 import logic.Boat as Boat
 
 class Player:
-    def __init__(self, name, wheat = 10, gold = 3, boat = None):
+    def __init__(self, name, wheat = 10, gold = 3, boat = Boat.Boat()):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
-        self.__boat = boat if boat != None else Boat.Boat()
+        self.__boat = boat
         # boat.getLoad()
     
     def mutateWheat(self, mutation = 1):
@@ -60,12 +60,9 @@ class Player:
     def assignBoat(self, boat = Boat.Boat()):
         """Assigns a Boat to this Player."""
 
-        print("creating boat")
-
-        if self.hasBoat():
+        if self.hasBoat:
             return False
         self.__boat = boat
-        print(self.__boat.toString())
         return self.__boat == boat
 
     def getBoat(self):
