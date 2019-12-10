@@ -3,8 +3,9 @@ import main
 global action
 
 def setup():
-    global title, userIn, num
+    global title, userIn, num, bg
     
+    bg = loadImage("background.png")
     title = "Enter the amount to modify, then press the <ENTER> key to confirm."
     userIn = ''
     num = '-0123456789'
@@ -13,7 +14,7 @@ def setup():
 def draw():
     global title
     
-    background(0, 255, 0)
+    image(bg, 0, 0)
     textAlign(CENTER, CENTER)
     textSize(32)
     fill(255)

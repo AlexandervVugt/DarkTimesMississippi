@@ -1,13 +1,14 @@
 def setup():
-    global player, title
+    global player, title, bg
     
+    bg = loadImage("background.png")
     player = None
     title = "{} has won the game!"
     
 def draw():
     global player, title
     
-    background(0, 255, 0)
+    bg = loadImage("background.png")
     textSize(50)
     textAlign(CENTER, CENTER)
     fill(255, 255, 255)

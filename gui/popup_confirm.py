@@ -3,16 +3,18 @@ import main
 global action
 
 def setup():
-    global title, confirm_text, cancel_text
+    global title, confirm_text, cancel_text, bg
     
     title = "Are you sure?"
     confirm_text = "CONFIRM"
     cancel_text = "CANCEL"
     action = None
+    bg = loadImage("background.png")
     
 def draw():
     global title, confirm_text, cancel_text
     
+    image(bg, 0, 0)
     textAlign(CENTER, CENTER)
     textSize(50)
     fill(255)
