@@ -1,11 +1,11 @@
 import Boat as Boat
 
 class Player:
-    def __init__(self, name, wheat = 10, gold = 3, boat = Boat.Boat()):
+    def __init__(self, name, wheat = 10, gold = 3, boat = None):
         self.__name = name
         self.__wheat = wheat
         self.__gold = gold
-        self.__boat = boat
+        self.__boat = boat if boat != None else Boat.Boat()
         # boat.getLoad()
     
     def mutateWheat(self, mutation = 1):
@@ -57,11 +57,13 @@ class Player:
 
         self.__boat = None
     
-    def assignBoat(self, boat = Boat.Boat()):
+    def assignBoat(self, boat = None):
         """Assigns a Boat to this Player."""
 
-        if self.hasBoat:
+        if self.hasBoat():
             return False
+        if boat == None:
+            boat = Boat.Boat()
         self.__boat = boat
         return self.__boat == boat
 
@@ -76,6 +78,8 @@ class Player:
     def sellBoat(self):
         """Sells this players Boat and transfers money into bank account"""
 
+        if not self.hasBoat():
+            raise AttributeError
         self.__gold += self.__boat.sell()
         self.destroyBoat()
     
