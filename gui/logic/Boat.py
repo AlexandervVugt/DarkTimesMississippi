@@ -49,6 +49,11 @@ class Boat:
 
         return self.__sellPrice
 
+    def sell(self):
+        """Returns the total value acquired when selling the boat at the market"""
+
+        return self.__load + self.__sellPrice
+
     def equals(self, other):
         """Returns true if and only if other is a Boat and equal to this Boat."""
 

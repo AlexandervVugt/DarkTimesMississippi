@@ -6,7 +6,7 @@ class Player:
         self.__wheat = wheat
         self.__gold = gold
         self.__boat = boat
-        boat.getLoad()
+        # boat.getLoad()
     
     def mutateWheat(self, mutation = 1):
         """
@@ -57,7 +57,7 @@ class Player:
 
         self.__boat = None
     
-    def assignBoat(self, boat):
+    def assignBoat(self, boat = Boat.Boat()):
         """Assigns a Boat to this Player."""
 
         if self.hasBoat:
@@ -65,18 +65,25 @@ class Player:
         self.__boat = boat
         return self.__boat == boat
 
-    
+    def getBoat(self):
+        return self.__boat
+
     def getName(self):
         """Returns the name of this Player."""
 
         return self.__name
 
+    def sellBoat(self):
+        """Sells this players Boat and transfers money into bank account"""
+
+        self.__gold += self.__boat.sell()
+        self.destroyBoat()
     
     def toString(self):
         """Returns a human-readable String representation of this Player."""
 
         template = "Player: {0:s}\n\tGold: {1:d}\n\tWheat: {2:d}\n\t{3:s}"
-        return template.format(self.__name, self.__gold, self.__wheat, self.__boat.toString())
+        return template.format(self.__name, self.__gold, self.__wheat, self.__boat.toString() if self.hasBoat() else "No boat")
 
     
     def equals(self, other):
