@@ -9,6 +9,8 @@ def setup():
     buttonText = "Start game"
     buttonX = range(3*width/8, 3*width/8 + width/4)
     buttonY = range(3*height/4, 3*height/4 + 100)
+    buttonA = range(0, 100)
+    buttonB = range(0, 100)
     alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     bg = loadImage("background.png")
     
@@ -30,6 +32,14 @@ def draw():
     rect(3*width/8, 3*height/4, width/4, 100, 10)
     fill(255)
     text(buttonText, 3*width/8, 3*height/4, width/4, 100)
+
+    fill(211, 211, 211)
+    rect(0, 0, 100, 100)
+    fill(0, 0, 0)
+    textSize(20)
+    textAlign(CENTER, CENTER)
+    text('EDIT \nEVENTS', 50, 50) 
+    
         
 def keyTyped():
     global input, names, alph
@@ -64,3 +74,5 @@ def mousePressed():
         main.currentScene.pop()
         turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
+        
+    # if mouseX in buttonA and mouseY in buttonB:
