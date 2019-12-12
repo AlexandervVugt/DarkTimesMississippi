@@ -1,5 +1,5 @@
 def setup():
-    global one, two, three, four, five, six, step, before, min_duration, elapsed
+    global one, two, three, four, five, six, step, before, min_duration, elapsed, xMap, yMap
     
     size(1280, 720, P3D)
     # frameRate(10)
@@ -14,12 +14,31 @@ def setup():
     before = True
     min_duration = 12
     elapsed = 0
+    xMap = {
+                1: [3*PI/2, 3*PI/2],
+                2: [0, PI],
+                3: [0, PI],
+                4: [0, PI],
+                5: [PI, 0],
+                6: [PI/2, PI/2]
+            }
+    yMap = {
+            1: [-1, -1],
+            2: [0, PI],
+            3: [PI/2, 3*PI/2],
+            4: [3*PI/2, PI/2],
+            5: [0, PI],
+            6: [-1, -1]
+            }
     
 def draw():
-    global before, min_duration, elapsed, step
+    global before, min_duration, elapsed, step, xMap, yMap, left_angle_x, left_angle_y, right_angle_x, right_angle_y
     
     if elapsed >= min_duration:
+        elapsed = 0
         step = 0
+        angle = (frameCount//10)%(2*PI)
+        
     
     if frameCount%10 == 0:
         background(255)
@@ -47,9 +66,9 @@ def draw():
 def drawDice(lead = 0):
     global one, two, three, four, five, six, step
     
-    rotateX(step*((frameCount/10)%(2*PI)+lead))
-    rotateY(step*((frameCount/10)%(2*PI)+lead))
-    rotateZ(step*((frameCount/10)%(2*PI)+lead))
+    rotateX(step*((frameCount//10)%(2*PI)+lead))
+    rotateY(step*((frameCount//10)%(2*PI)+lead))
+    rotateZ(step*((frameCount//10)%(2*PI)+lead))
     # box(150)
     pushMatrix()
     translate(-75, -75, 75)
@@ -74,10 +93,16 @@ def drawDice(lead = 0):
     popMatrix()
     
 def mousePressed():
-    global before, step
+    global before, step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, xMap, yMap
     
     if mouseX in range(width/2 - 225, width/2 + 225) and mouseY in range(3*height/4 - 50, 3*height/4 + 30):
         if before:
+            left = random(7)
+            right = random(7)
+            left_angle_x = xMap.get(left)
+            left_angle_y = yMap.get(left)
+            right_angle_x = xMap.get(right)
+            right_angle_y = yMap.get(right)
             elapsed = 0
             step = 1
             before = False
