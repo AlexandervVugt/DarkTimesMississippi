@@ -1,4 +1,4 @@
-import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious, eventScreen
+import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious, eventScreen, startScreen
 import logic.Game as Game
 import logic.GameController as GameController
 
@@ -16,7 +16,7 @@ def setup():
     currentScene = [startScreen]
     #create a map for scenes and their names
     scenes = {
-              "startScreen": starttScreen,
+              "startScreen": startScreen,
               "inputScreen": inputScreen,
               "event": event,
               "dice": dice,
