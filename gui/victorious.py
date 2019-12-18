@@ -14,10 +14,19 @@ def draw():
     global player, title, font, bg, bgs
     
     # bg = loadImage("background.png")
+    # cPlace = random(20)
     textSize(50)
     textAlign(CENTER, CENTER)
     fill(255, 255, 255)
-    text(title.format(player.getName()), width/2, height/2)
+    text(title.format(player.getName()), width/2, height/2)    
+    
+    i = 0
+    
+    while i < 10:
+        ellipse(random(width), random(height), 5, 5)
+        i += 1
+        
+    fill(255, 255, 255)
     
     playerlist = main.game.getPlayers()
     for i in range(len(playerlist)+1):
