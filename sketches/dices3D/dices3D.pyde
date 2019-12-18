@@ -1,7 +1,7 @@
 import random
 
 def setup():
-    global one, two, three, four, five, six, step, before, min_duration, elapsed, xMap, yMap, left_x_step, left_y_step, right_x_step, right_y_step
+    global one, two, three, four, five, six, step, before, min_duration, elapsed, xMap, yMap, left_x_step, left_y_step, right_x_step, right_y_step, left_angle_x, left_angle_y, right_angle_x, right_angle_y
     
     size(1280, 720, P3D)
     # frameRate(10)
@@ -12,11 +12,15 @@ def setup():
     four = loadImage("four.png")
     five = loadImage("five.png")
     six = loadImage("six.png")
-    step = 0
-    left_x_step = 1
-    left_y_step = 1
-    right_y_step = 1
-    right_x_step = 1
+    step = False
+    left_x_step = True
+    left_y_step = True
+    right_y_step = True
+    right_x_step = True
+    left_angle_x = 0
+    left_angle_y = 0
+    right_angle_x = 0
+    right_angle_y = 0
     before = True
     min_duration = 12
     elapsed = 0
@@ -40,35 +44,36 @@ def setup():
 def draw():
     global before, min_duration, elapsed, step, xMap, yMap, left_angle_x, left_angle_y, right_angle_x, right_angle_y
     
-    if elapsed >= min_duration:
+    if elapsed >= min_duration and frameCount%5 == 0:
         # elapsed = 0
         # step = 0
-        angle = (frameCount//10)%(2*PI)
-        if left_x_step == 1:
+        angle = (frameCount//5)%(2*PI)
+        if left_x_step:
             checkAngle(angle, left_angle_x, 'lx')
-        if left_y_step == 1:
+        if left_y_step:
             checkAngle(angle, left_angle_y, 'ly')
-        if right_x_step == 1:
-            checkAngle(angle, right_angle_x, 'rx')
-        if right_y_step == 1:
-            checkAngle(angle, right_angle_y, 'ry')
-        if left_x_step == 0 and left_y_step == 0 and right_x_step == 0 and right_y_step == 0:
-            step = 0
+        if right_x_step:
+            checkAngle(angle + PI, right_angle_x, 'rx')
+        if right_y_step:
+            checkAngle(angle + PI, right_angle_y, 'ry')
+        if not left_x_step and not left_y_step and not right_x_step and not right_y_step:
+            print()
+            step = False
             elapsed = 0
         
     
-    if frameCount%10 == 0:
+    if frameCount%5 == 0:
         background(255)
         #create a matrix for the first cube
         pushMatrix()
         translate(width/2 - 125, height/2)
-        drawDice(left_x_step, left_y_step, PI)
+        drawDice(left_x_step, left_y_step, left_angle_x, left_angle_y, PI)
         popMatrix()
     
         #create a matrix for the second cube
         pushMatrix()
         translate(width/2 + 125, height/2)
-        drawDice(right_x_step, right_y_step)
+        drawDice(right_x_step, right_y_step, right_angle_x, right_angle_y)
         popMatrix()
         if before or step == 0: rect(width/2 - 225, 3*height/4 - 50, 450, 80, 10)
         fill(0)
@@ -80,12 +85,24 @@ def draw():
         if step == 1:
             elapsed += 1
     
-def drawDice(x_step, y_step, lead = 0):
+def drawDice(x_step, y_step, angle_x, angle_y, lead = 0):
     global one, two, three, four, five, six, step
     
-    rotateX(x_step*step*((frameCount//10)%(2*PI)+lead))
-    rotateY(y_step*step*((frameCount//10)%(2*PI)+lead))
-    rotateZ(step*((frameCount//10)%(2*PI)+lead))
+    # rotateX(((frameCount//10)%(2*PI)+lead) if x_step and step else left_angle_x)
+    # rotateY(((frameCount//10)%(2*PI)+lead) if y_step and step else left_angle_y)
+    if step:
+        if x_step:
+            rotateX(((frameCount//5)%(2*PI)+lead))
+        else:
+            rotateX(angle_x)
+        if y_step:
+            rotateY(((frameCount//5)%(2*PI)+lead))
+        else:
+            rotateY(angle_y)
+        rotateZ(((frameCount//5)%(2*PI)+lead))
+    else:
+        rotateX(angle_x)
+        rotateY(angle_y)
     # box(150)
     pushMatrix()
     translate(-75, -75, 75)
@@ -110,33 +127,41 @@ def drawDice(x_step, y_step, lead = 0):
     popMatrix()
     
 def checkAngle(angle, coordinates, target):
-    global left_x_step, left_y_step, right_x_step, right_y_step
+    global left_x_step, left_y_step, right_x_step, right_y_step, left_angle_x, left_angle_y, right_angle_x, right_angle_y
     
     for coordinate in coordinates:
-        leftbound = coordinate - (1.0/4.0*PI)
-        rightbound = coordinate + (1.0/4.0*PI)
+        leftbound = coordinate - (1.0/8.0*PI)
+        rightbound = coordinate + (1.0/8.0*PI)
         if angle >= leftbound and angle <= rightbound:
             print("{} is near coordinate {}".format(angle, coordinate))
             if target == 'lx':
-                left_x_step = 0
+                left_x_step = False
+                left_angle_x = angle
             elif target == 'ly':
-                left_y_step = 0
+                left_y_step = False
+                left_angle_y = angle
             elif target == 'rx':
-                right_x_step = 0
+                right_x_step = False
+                right_angle_x = angle
             elif target == 'ry':
-                right_y_step = 0
+                right_y_step = False
+                right_angle_y = angle
         elif coordinate == -1:
             print("{} is near coordinate {}".format(angle, coordinate))
             if target == 'lx':
-                left_x_step = 0
+                left_x_step = False
+                left_angle_x = angle
             elif target == 'ly':
-                left_y_step = 0
+                left_y_step = False
+                left_angle_y = angle
             elif target == 'rx':
-                right_x_step = 0
+                right_x_step = False
+                right_angle_x = angle
             elif target == 'ry':
-                right_y_step = 0
-        else:
-            print("{} is not near coordinate {}".format(angle, coordinate))
+                right_y_step = False
+                right_angle_y = angle
+        #else:
+            #print("{} is not near coordinate {}".format(angle, coordinate))
     
 def mousePressed():
     global before, step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, xMap, yMap
@@ -145,12 +170,14 @@ def mousePressed():
         if before:
             left = random.randrange(1, 7)
             right = random.randrange(1, 7)
+            print(left)
+            print(right)
             left_angle_x = xMap.get(str(left))
             left_angle_y = yMap.get(str(left))
             right_angle_x = xMap.get(str(right))
             right_angle_y = yMap.get(str(right))
             elapsed = 0
-            step = 1
+            step = True
             before = False
         elif step == 0:
             setup()
