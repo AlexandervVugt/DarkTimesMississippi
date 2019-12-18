@@ -1,6 +1,10 @@
+import main
+
 def setup():
-    global bg
+    global bg, buttonA, buttonB
     bg = loadImage("background.png")
+    buttonA = range(450, 950)
+    buttonB = range(350, 425)
 
 def draw():
     size(1440, 900)
@@ -27,4 +31,15 @@ def draw():
     fill(255, 255, 255)
     textSize(50)
     text('Event Cards', 550, 605)
-    
+
+def mousePressed():
+    global buttonA, buttonB
+    if mouseX in buttonA and mouseY in buttonB:
+        main.currentScene.pop()
+        main.currentScene.append(main.scenes.get("inputScreen"))
+
+def keyPressed():
+    return
+
+def keyTyped():
+    return
