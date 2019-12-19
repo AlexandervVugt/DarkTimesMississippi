@@ -11,12 +11,21 @@ def setup():
     buttonY = range(3*height/4, 3*height/4 + 100)
     buttonA = range(0, 100)
     buttonB = range(0, 100)
+    buttonC = range(0, 100)
+    buttonD = range(0, 50)
     alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     bg = loadImage("background.png")
     
 def draw():
     global names, input, title, buttonText
     image(bg, 0, 0)
+    
+    fill(0, 0, 0)
+    rect(0, 0, 100, 50)
+    fill(255, 255, 255)
+    textSize(25)
+    text('BACK', 50, 25)
+    
     textAlign(CENTER, CENTER)
     textSize(32)
     fill(255)
@@ -55,7 +64,7 @@ def keyPressed():
         input = input[:-1]
         
 def mousePressed():
-    global names, buttonX, buttonY, game
+    global names, buttonX, buttonY, buttonC, buttonD, game
     if mouseX in buttonX and mouseY in buttonY and len(names) >= 2:
         players = []
         for name in names:
@@ -66,5 +75,8 @@ def mousePressed():
         main.currentScene.pop()
         turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
+    if mouseX in buttonC and mouseY in buttonD:
+        main.currentScene.pop()
+        main.currentScene.append(main.scenes.get("startScreen"))
         
     # if mouseX in buttonA and mouseY in buttonB:

@@ -14,6 +14,8 @@ def draw():
     size(1440, 900)
     image(bg, 0, 0)
     
+    textAlign(LEFT, LEFT)
+    
     fill (150, 0, 0)
     textSize(75)
     text('DarkTimesMississippi', 300, 200)
