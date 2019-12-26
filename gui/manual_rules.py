@@ -21,6 +21,12 @@ def draw():
     fill(255, 255, 255)
     textSize(25)
     text('BACK', 20, 35)
+    if ((mouseX in buttonA) and (mouseY in buttonB)):
+        fill(100, 100, 100)
+        rect(0, 0, 100, 50)
+        fill(255, 255, 255)
+        textSize(25)
+        text('BACK', 20, 35)
     
     fill(255, 255, 255)
     rect(390, 250, 600, 450)
@@ -34,6 +40,12 @@ def draw():
     fill(255, 255, 255)
     textSize(25)
     text('NEXT', 910, 685)
+    if ((mouseX in buttonC) and (mouseY in buttonD)):
+        fill(100, 100, 100)
+        rect(890, 650, 100, 50)
+        fill(255, 255, 255)
+        textSize(25)
+        text('NEXT', 910, 685)
 
 def mousePressed():
     global buttonA, buttonB, buttonC, buttonD

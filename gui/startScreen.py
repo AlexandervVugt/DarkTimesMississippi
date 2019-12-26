@@ -25,18 +25,36 @@ def draw():
     fill(255, 255, 255)
     textSize(50)
     text('New Game', 575, 405)
+    if ((mouseX in buttonA) and (mouseY in buttonB)):
+        fill(100, 100, 100)
+        rect(450, 350, 500, 75)
+        fill(255, 255, 255)
+        textSize(50)
+        text('New Game', 575, 405)
     
     fill(0, 0, 0)
     rect(450, 450, 500, 75)
     fill(255, 255, 255)
     textSize(50)
     text('Manual & Rules', 520, 505)
+    if ((mouseX in buttonC) and (mouseY in buttonD)):
+        fill(100, 100, 100)
+        rect(450, 450, 500, 75)
+        fill(255, 255, 255)
+        textSize(50)
+        text('Manual & Rules', 520, 505)
     
     fill(0, 0, 0)
     rect(450, 550, 500, 75)
     fill(255, 255, 255)
     textSize(50)
     text('Event Cards', 550, 605)
+    if ((mouseX in buttonE) and (mouseY in buttonF)):
+        fill(100, 100, 100)
+        rect(450, 550, 500, 75)
+        fill(255, 255, 255)
+        textSize(50)
+        text('Event Cards', 550, 605)
 
 def mousePressed():
     global buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
