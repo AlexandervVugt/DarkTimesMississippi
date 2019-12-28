@@ -1,8 +1,9 @@
 import main
 
 def setup():
-    global dice1, dice2, cube, active
+    global dice1, dice2, cube, active, bg
     
+    bg = loadImage("background.png")
     one = loadImage("one.png")
     two = loadImage("two.png")
     three = loadImage("three.png")
@@ -17,7 +18,7 @@ def setup():
 def draw():
     global dice1, dice2
     
-    background(0, 255, 0)
+    image(bg, 0, 0)
     square(width/2 - 200, height/2 - 75, 150)
     square(width/2 + 50, height/2 - 75, 150)
     rect(width/2 - 225, 3*height/4 - 50, 450, 80, 10)
