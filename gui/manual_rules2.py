@@ -1,8 +1,10 @@
 import main
 
 def setup():
-    global bg, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
+    global bg, wood, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     bg = loadImage("background.png")
+    wood = loadImage("woodtexture.png")
+    wood.resize(600, 450)
     buttonA = range(0, 100)
     buttonB = range(0, 50)
     buttonC = range(890, 990)
@@ -16,24 +18,23 @@ def draw():
     
     fill(150, 0, 0)
     textSize(75)
-    text('Manual & Rules', 415, 200)
+    text('Manual & Rules', 375, 200)
     
     fill(0, 0, 0)
     rect(0, 0, 100, 50)
     fill(255, 255, 255)
     textSize(25)
-    text('BACK', 20, 35)
+    text('BACK', 10, 35)
     if ((mouseX in buttonA) and (mouseY in buttonB)):
         fill(100, 100, 100)
         rect(0, 0, 100, 50)
         fill(255, 255, 255)
         textSize(25)
-        text('BACK', 20, 35)
+        text('BACK', 10, 35)
     
-    fill(255, 255, 255)
-    rect(390, 250, 600, 450)
+    image(wood, 390, 250)
     
-    fill(0, 0, 0)
+    fill(217, 216, 114)
     textSize(17)
     text('The board features a one way river towards the market \nof New Orleans. To get back to thine farm, \nthou shall use either of two featured one way paths. \nAll players start the game with 10 units of wheat and 2 dollars. \nAt the start of every round, excluding the first round, \nall players receive 1 unit of wheat at their farm. \nTo win, thou shall acquire 30 dollars, and return to thine farm. \nEvery player has three recourse piles: \n- Thou shall store thine wheat at the farm. \n- Thou shall store thine money in the safe. \n- Thou shall store thine wheat for selling in the boat.', 395, 270)
     
@@ -41,25 +42,30 @@ def draw():
     rect(890, 650, 100, 50)
     fill(255, 255, 255)
     textSize(25)
-    text('NEXT', 910, 685)
+    text('NEXT', 905, 685)
     if ((mouseX in buttonC) and (mouseY in buttonD)):
         fill(100, 100, 100)
         rect(890, 650, 100, 50)
         fill(255, 255, 255)
         textSize(25)
-        text('NEXT', 910, 685)
+        text('NEXT', 905, 685)
     
     fill(0, 0, 0)
     rect(390, 650, 100, 50)
     fill(255, 255, 255)
     textSize(25)
-    text('BACK', 410, 685)
+    text('BACK', 400, 685)
     if ((mouseX in buttonE) and (mouseY in buttonF)):
         fill(100, 100, 100)
         rect(390, 650, 100, 50)
         fill(255, 255, 255)
         textSize(25)
-        text('BACK', 410, 685)
+        text('BACK', 400, 685)
+        
+    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF))):
+        cursor(HAND)
+    else:
+        cursor(ARROW)
 
 def mousePressed():
     global buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
