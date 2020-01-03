@@ -1,4 +1,4 @@
-import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious, eventScreen, startScreen, manual_rules, eventScreen, manual_rules2, manual_rules3, manual_rules4
+import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious, eventScreen, startScreen, manual_rules, eventScreen, eventScreen2, eventScreen3, manual_rules2, manual_rules3, manual_rules4, settingsScreen
 import logic.Game as Game
 import logic.GameController as GameController
 
@@ -26,9 +26,12 @@ def setup():
               "victorious": victorious,
               "manual_rules": manual_rules,
               "eventScreen": eventScreen,
+              "eventScreen2": eventScreen2,
+              "eventScreen3": eventScreen3,
               "manual_rules2": manual_rules2,
               "manual_rules3": manual_rules3,
-              "manual_rules4": manual_rules4
+              "manual_rules4": manual_rules4,
+              "settingsScreen": settingsScreen
               }
     
     for scene in scenes.values():

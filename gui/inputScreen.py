@@ -48,6 +48,11 @@ def draw():
     fill(255)
     text(buttonText, 3*width/8, 3*height/4, width/4, 100)
     
+    if (((mouseX in buttonX) and (mouseY in buttonY)) or ((mouseX in buttonC) and (mouseY in buttonD))):
+        cursor(HAND)
+    else:
+        cursor(ARROW)
+    
 def keyTyped():
     global input, names, alph
     if len(names) == 4:
