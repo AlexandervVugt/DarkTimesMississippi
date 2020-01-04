@@ -18,7 +18,7 @@ def setup():
           "The river seems peaceful, \nthou cant feel a breeze. \nAt thine next turn, \nthou shall substract 2 from the amount thee rolled.",
           "One man's trash is another man's treasure. \nThou hast stumbled upon a stranded ship, \nand it has wheat aboard! \nThou receives 2 wheat, \nprovided your boat can carry more.",
           "Drowning in sight, 12 o'clock! \nThe drowning man thou has saved, \nturns out to be the shipwright's son. \nHe will reward thee generously. \nThou whill receive an enhanced \nvessel for thine next journey, \nfree of charge.",
-          "In thine dreams, a vision about thine journey appeared. \nThere are no obstacles to be seen! \nThou may ignore any obstacles thee encounters on tis journey.",
+          "In thine dreams, a vision about thine journey appeared. \nThere are no obstacles to be seen! \nThou may ignore any obstacles \nthee encounters on this journey.",
           "The fertilizer thee used has greatly increasd thine harvest. \nAt thine next 3 turns, \nthou will receive 2 wheat instead of 1.",
           "Thine boat has gotten into a rapid! \nTake 3 extra steps.",
           "Thou hast found a sea mine \nto leave behind for thine opponents. \nThou may place the sea mine obstacle on the board.",
@@ -109,10 +109,20 @@ def mousePressed():
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("startScreen"))
     if mouseX in buttonC and mouseY in buttonD:
+        fill(0, 0, 0)
+        rect(1190, 475, 100, 50)
+        fill(255, 255, 255)
+        textSize(25)
+        text('NEXT', 1240, 500)
         x = x + 1
         if x == 29:
             x = 28
     if mouseX in buttonE and mouseY in buttonF:
+        fill(0, 0, 0)
+        rect(100, 475, 100, 50)
+        fill(255, 255, 255)
+        textSize(25)
+        text('BACK', 150, 500)
         x = x - 1
         if x == -1:
             x = 0

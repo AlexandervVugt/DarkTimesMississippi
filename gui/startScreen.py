@@ -22,7 +22,7 @@ def draw():
     fill (150, 0, 0)
     textSize(75)
     textFont(font, 75)
-    text('DarkTimesMississippi', 300, 200)
+    text('DarkTimesMississippi', 275, 200)
     
     fill(0, 0, 0)
     rect(450, 350, 500, 75)
