@@ -29,7 +29,7 @@ def setup():
         scene.setup()
     
 def draw():
-    image(bg, 0, 0)
+    image(bg, 0, 0, width, height)
     global currentScene
     
     currentScene[-1].draw()
