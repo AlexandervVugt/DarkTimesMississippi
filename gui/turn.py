@@ -85,7 +85,7 @@ def mousePressed():
     if not rolled and mouseX in range(width/2 - 75, width/2 + 75) and mouseY in range(height/2 - 75, height/2 + 75):
         main.currentScene.append(main.scenes.get("dice"))
     elif mouseX in range(width/2-150, width/2+150):
-        if mouseY in range(height/4-50, height/4+50):
+        if mouseY in range(height/4+20, height/4+120):
             main.gameController.nextPlayer()
             main.gameController.startTurn(None)
             refresh()
@@ -159,10 +159,10 @@ def eventButton():
 def endTurnButton():
     global endText
     
-    fill (100 if mouseX in range(width/2-150, width/2+150) and mouseY in range(height/4--20, height/4+20) else 0)
-    rect(width/2-150, height/4--20, 300, 100, 10)
+    fill (100 if mouseX in range(width/2-150, width/2+150) and mouseY in range(height/4+20, height/4+120) else 0)
+    rect(width/2-150, height/4+20, 300, 100, 10)
     fill(255)
-    text(endText, width/2-150, height/4--20, 300, 100)
+    text(endText, width/2-150, height/4+20, 300, 100)
     
 def buttons():
     global player
