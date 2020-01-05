@@ -21,7 +21,7 @@ def draw():
     image(bg, 0, 0)
     square(width/2 - 200, height/2 - 75, 150)
     square(width/2 + 50, height/2 - 75, 150)
-    rect(width/2 - 225, 3*height/4 - 50, 450, 80, 10)
+    rect(width/2 - 250, 3*height/4 - 50, 500, 80, 10)
     fill(0)
     image(dice1, width/2 - 200, height/2 - 75, 150, 150)
     image(dice2, width/2 + 50, height/2 - 75, 150, 150)
