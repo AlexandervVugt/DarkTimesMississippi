@@ -1,31 +1,62 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText
+    global eventText, diceText, endText, bg, bgs, font
     
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
     endText = 'END TURN'
+    bg = loadImage("background.png")
+    bgs = loadImage("woodtexture.png")
+    bgs.resize(200, 200)
+    font = loadFont('BanglaMN-48.vlw')
+    
     
 def draw():
     global rolled
     
     textAlign(CENTER, CENTER)
-    background(0, 255, 0)
+    image(bg, 0, 0)
     fill (150, 0, 0)
     textSize(50)
     text('DarkTimesMississippi',700,70)
 
-    
-    for i in range(len(main.game.getPlayers())+1):
+    playerlist = main.game.getPlayers()
+    for i in range(len(playerlist)+1):
         if i == 1:
-            square(1, 1, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 1,)
+            #square(1, 1, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 1, 200, 200)
         if i == 2:
-            square(1, 210, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 210,)
+            #square(1, 210, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 100, 200, 420)
         if i == 3:
-            square(1, 420, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 420,)
+            #square(1, 420, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 200, 200, 640)
         if i == 4:
-            square(1, 630, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 630,)
+            #square(1, 630, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 300, 200, 860)
+        
+        cursor(ARROW)
 
                 
         
