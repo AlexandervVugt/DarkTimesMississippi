@@ -32,29 +32,30 @@ def setup():
     saved_right_x = 0
     saved_right_y = 0
     before = True
-    min_duration = 12
-    max_duration = 60
+    min_duration = 1
+    max_duration = 12
     elapsed = 0
     xMap = {
-                '1': [3*PI/2, 3*PI/2],
+                '1': [PI/2, PI/2],
                 '2': [0, PI],
                 '3': [0, PI],
                 '4': [0, PI],
                 '5': [PI, 0],
-                '6': [PI/2, PI/2]
+                '6': [3*PI/2, 3*PI/2]
             }
     yMap = {
-    '1': [-1, -1],
+    '1': [0, PI],
     '2': [0, PI],
     '3': [PI/2, 3*PI/2],
     '4': [3*PI/2, PI/2],
     '5': [0, PI],
-    '6': [-1, -1]
+    '6': [0, PI]
             }
     
 def draw():
     global before, min_duration, max_duration, elapsed, step, xMap, yMap, left_angle_x, left_angle_y, right_angle_x, right_angle_y
-    global saved_left_x, saved_left_y, saved_right_x, saved_right_y
+    global saved_left_x, saved_left_y, saved_right_x, saved_right_y, left_index_x, left_index_y, right_index_x, right_index_y
+    global left_x_step, left_y_step, right_x_step, right_y_step
     
     if elapsed >= min_duration and frameCount%5 == 0:
         # elapsed = 0
@@ -68,10 +69,41 @@ def draw():
             checkAngle(angle + PI, right_angle_x, 'rx')
         if right_y_step:
             checkAngle(angle + PI, right_angle_y, 'ry')
-        if elapsed >= max_duration or (not left_x_step and not left_y_step and not right_x_step and not right_y_step):
-            print()
+        if not left_x_step and not left_y_step and not right_x_step and not right_y_step:
+            print(saved_left_x)
+            print(saved_left_y)
+            print(saved_right_x)
+            print(saved_right_y)
             step = False
             elapsed = 0
+        elif elapsed >= max_duration:
+            if left_x_step:
+                if left_y_step:
+                    saved_left_x = left_angle_x[0]
+                    left_index_x = 0
+                    left_x_step = False
+                else:
+                    saved_left_x = left_angle_x[left_index_y]
+                    left_index_x = left_index_y
+                    left_x_step = False
+            if right_x_step:
+                if right_y_step:
+                    saved_right_x = right_angle_x[0]
+                    right_index_x = 0
+                    right_x_step = False
+                else:
+                    saved_right_x = right_angle_x[right_index_y]
+                    right_index_x = right_index_y
+                    right_x_step = False
+            if left_y_step:
+                saved_left_y = left_angle_y[left_index_x]
+                left_index_y = left_index_x
+                left_y_step = False
+            if right_y_step:
+                saved_right_y = right_angle_y[right_index_x]
+                right_index_y = right_index_x
+                right_y_step = False
+            step = False
         
     
     if frameCount%5 == 0:
@@ -146,7 +178,7 @@ def checkAngle(angle, coordinates, target):
         leftbound = coordinate - (1.0/8.0*PI)
         rightbound = coordinate + (1.0/8.0*PI)
         if (angle >= leftbound and angle <= rightbound) or coordinate == -1:
-            print("{} is near coordinate {}".format(angle, coordinate))
+            # print("{} is near coordinate {}".format(angle, coordinate))
             if target == 'lx' and (left_index_y == -1 or left_angle_x.index(coordinate) == left_index_y):
                 left_x_step = False
                 saved_left_x = angle
