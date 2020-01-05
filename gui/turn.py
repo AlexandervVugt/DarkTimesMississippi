@@ -1,7 +1,7 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText, bg, bgs, font
+    global eventText, diceText, endText, bg, bgs, font, dicebttn
     
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
@@ -10,7 +10,7 @@ def setup():
     bgs = loadImage("woodtexture.png")
     bgs.resize(200, 200)
     font = loadFont('BanglaMN-48.vlw')
-    
+    dicebttn = loadImage("dicebttn.png")
     
 def draw():
     global rolled
@@ -132,10 +132,15 @@ def keyTyped():
 def diceButton():
     global diceText
     
-    fill (255, 0, 0)
-    text(diceText, 700, 150)
-    fill (255, 0, 0)
+    stroke(0)
+    strokeWeight(4)
     square(600, 190, 150)
+    noStroke()
+    image(dicebttn, 600, 190, 150, 150)
+    # fill (255, 0, 0)
+    # text(diceText, 700, 150)
+    # fill (255, 0, 0)
+    # square(600, 190, 150)
     
 def eventButton():
     global eventText
