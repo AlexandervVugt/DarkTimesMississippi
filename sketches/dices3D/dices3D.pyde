@@ -21,6 +21,10 @@ def setup():
     left_angle_y = 0
     right_angle_x = 0
     right_angle_y = 0
+    left_index_x = -1
+    left_index_y = -1
+    right_index_x = -1
+    right_index_y = -1
     before = True
     min_duration = 12
     elapsed = 0
@@ -132,36 +136,20 @@ def checkAngle(angle, coordinates, target):
     for coordinate in coordinates:
         leftbound = coordinate - (1.0/8.0*PI)
         rightbound = coordinate + (1.0/8.0*PI)
-        if angle >= leftbound and angle <= rightbound:
+        if (angle >= leftbound and angle <= rightbound) or coordinate == -1:
             print("{} is near coordinate {}".format(angle, coordinate))
-            if target == 'lx':
+            if target == 'lx' and (left_index_y == -1 or left_angle_x.index(coordinate) == left_index_y):
                 left_x_step = False
-                left_angle_x = angle
-            elif target == 'ly':
+                left_index_x = left_angle_x.index(coordinate)
+            elif target == 'ly' and (left_index_x == -1 or left_angle_y.index(coordinate) == left_index_x):
                 left_y_step = False
-                left_angle_y = angle
-            elif target == 'rx':
+                left_index_y = left_angle_y.index(coordinate)
+            elif target == 'rx' and (right_index_y == -1 or right_angle_x.index(coordinate) == right_index_y):
                 right_x_step = False
-                right_angle_x = angle
-            elif target == 'ry':
+                right_index_x = right_angle_x.index(coordinate)
+            elif target == 'ry' and (right_index_x == -1 or right_angle_y.index(coordinate) == right_index_x):
                 right_y_step = False
-                right_angle_y = angle
-        elif coordinate == -1:
-            print("{} is near coordinate {}".format(angle, coordinate))
-            if target == 'lx':
-                left_x_step = False
-                left_angle_x = angle
-            elif target == 'ly':
-                left_y_step = False
-                left_angle_y = angle
-            elif target == 'rx':
-                right_x_step = False
-                right_angle_x = angle
-            elif target == 'ry':
-                right_y_step = False
-                right_angle_y = angle
-        #else:
-            #print("{} is not near coordinate {}".format(angle, coordinate))
+                right_index_y = right_angle_y.index(coordinate)
     
 def mousePressed():
     global before, step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, xMap, yMap
