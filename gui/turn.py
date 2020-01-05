@@ -1,7 +1,7 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText, bg, bgs, font, dicebttn, cardback
+    global eventText, diceText, endText, bg, bgs, font, dicebttn, cardback, logo
     
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
@@ -12,6 +12,7 @@ def setup():
     font = loadFont('BanglaMN-48.vlw')
     dicebttn = loadImage("dicebttn.png")
     cardback = loadImage("card_back.png")
+    logo = loadImage("GameLogo.png")
     
 def draw():
     global rolled
@@ -20,7 +21,8 @@ def draw():
     image(bg, 0, 0)
     fill (150, 0, 0)
     textSize(50)
-    text('DarkTimesMississippi',700,70)
+    image(logo, 350, 1, 700, 250)
+    
 
     playerlist = main.game.getPlayers()
     for i in range(len(playerlist)+1):
@@ -157,10 +159,10 @@ def eventButton():
 def endTurnButton():
     global endText
     
-    fill (100 if mouseX in range(width/2-150, width/2+150) and mouseY in range(height/4-50, height/4+50) else 0)
-    rect(width/2-150, height/4-50, 300, 100, 10)
+    fill (100 if mouseX in range(width/2-150, width/2+150) and mouseY in range(height/4--20, height/4+20) else 0)
+    rect(width/2-150, height/4--20, 300, 100, 10)
     fill(255)
-    text(endText, width/2-150, height/4-50, 300, 100)
+    text(endText, width/2-150, height/4--20, 300, 100)
     
 def buttons():
     global player
@@ -170,16 +172,16 @@ def buttons():
     if player.hasBoat():
         editButton(195.0)
         
-        fill(255, 255, 255)
+        fill(0)
         rect(1300, 120, 45, 20)
         textSize(15)
-        fill(0, 0, 0)
+        fill(255, 255, 255)
         text('SELL', 1305, 120, 1340, 140)
         
-        fill(255, 255, 255)
+        fill(0)
         rect(1350, 120, 75, 20)
         textSize(15)
-        fill(0, 0, 0)
+        fill(255, 255, 255)
         text('DESTROY', 1355, 120, 1420, 140)
     else:
         fill(255, 255, 255)
@@ -195,10 +197,10 @@ def buttons():
         text('Farm reached, VICTORIOUS!', width-275, 290, width, 310)
     
 def editButton(y):
-    fill(255, 255, 255)
+    fill(0)
     rect(1300, y, 45, 20)
     textSize(15)
-    fill(0, 0, 0)
+    fill(255, 255, 255)
     text('EDIT', 1305, y, 1340, y+20)
 
 def refresh():
