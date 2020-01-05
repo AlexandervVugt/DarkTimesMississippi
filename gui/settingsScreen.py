@@ -2,17 +2,18 @@ add_library('sound')
 import main
 
 def setup():
-    global bg, volumeON, volumeOFF, s, buttonA, buttonB, buttonC, buttonD
+    global bg, volumeON, volumeOFF, s, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     bg = loadImage("background.png")
     volumeON = loadImage("volumeON.png")
     volumeON.resize(100, 100)
     volumeOFF = loadImage("volumeOFF.png")
     volumeOFF.resize(100, 100)
-    s = 'epicmusic.mp3'
     buttonA = range(0, 100)
     buttonB = range(0, 50)
     buttonC = range(500, 600)
     buttonD = range(500, 600)
+    buttonE = range(700, 800)
+    buttonF = range(500, 600)
     
 def draw():
     size(1440, 900)
@@ -37,15 +38,17 @@ def draw():
     image(volumeON, 500, 500)
     image(volumeOFF, 700, 500)
     
-    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD))):
+    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF))):
         cursor(HAND)
     else:
         cursor(ARROW)
         
 def mousePressed():
-    global s, buttonA, buttonB, buttonC, buttonD
+    global s, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     if mouseX in buttonA and mouseY in buttonB:
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("startScreen"))
     if mouseX in buttonC and mouseY in buttonD:
-        pass
+        gui.enable_sound()
+    if mouseX in buttonE and mouseY in buttonF:
+        gui.mute_sound()
