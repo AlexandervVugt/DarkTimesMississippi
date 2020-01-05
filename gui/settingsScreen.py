@@ -49,6 +49,6 @@ def mousePressed():
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("startScreen"))
     if mouseX in buttonC and mouseY in buttonD:
-        gui.enable_sound()
+        main.enable_sound()
     if mouseX in buttonE and mouseY in buttonF:
-        gui.mute_sound()
+        main.disable_sound()

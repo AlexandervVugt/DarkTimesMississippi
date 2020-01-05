@@ -7,16 +7,8 @@ def setup():
     
     size(1440, 900) 
     main.setup()
-    s = SoundFile(this, 'epicmusic.mp3')
-    s.amp(0.50)
-    enable_sound()
-    s.loop()
-    
-def mute_sound():
-    s.stop()
-    
-def enable_sound():
-    s.play()
+    sound = SoundFile(this, 'epicmusic.mp3')
+    main.setup_sound(sound)
     
 def draw():
     main.draw()
