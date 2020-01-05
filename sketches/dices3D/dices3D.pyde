@@ -131,7 +131,7 @@ def drawDice(x_step, y_step, angle_x, angle_y, lead = 0):
     popMatrix()
     
 def checkAngle(angle, coordinates, target):
-    global left_x_step, left_y_step, right_x_step, right_y_step, left_angle_x, left_angle_y, right_angle_x, right_angle_y
+    global left_x_step, left_y_step, right_x_step, right_y_step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, left_index_x, left_index_y, right_index_x, right_index_y
     
     for coordinate in coordinates:
         leftbound = coordinate - (1.0/8.0*PI)
