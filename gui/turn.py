@@ -69,12 +69,11 @@ def draw():
         endTurnButton()
         eventButton()
     
-    fill(211, 211, 211)
-    rect(width-350, 0, 350, 310)
-    textSize(25)
-    fill(0, 0, 0)
+    image(bgs, 1080, 1, 360, 320)
+    textSize(22)
+    fill(217, 216, 114)
     textAlign(TOP)
-    text(player.toString(), width-350, 0, width, 500)
+    text(player.toString(), width-340, 50, width, 500)
     buttons()
     
 def mousePressed():
