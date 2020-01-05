@@ -1,7 +1,7 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText, bg, bgs, font, dicebttn
+    global eventText, diceText, endText, bg, bgs, font, dicebttn, cardback
     
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
@@ -11,6 +11,7 @@ def setup():
     bgs.resize(200, 200)
     font = loadFont('BanglaMN-48.vlw')
     dicebttn = loadImage("dicebttn.png")
+    cardback = loadImage("card_back.png")
     
 def draw():
     global rolled
@@ -79,19 +80,16 @@ def mousePressed():
     
     # print("x: " + str(mouseX))
     # print("y: " + str(mouseY))
-    if mouseX in range(600,750):
-        if mouseY in range(190,340):
-            if not rolled:
-                main.currentScene.append(main.scenes.get("dice"))
-                # print('klikrood')
-            else:
-                main.gameController.nextPlayer()
-                main.gameController.startTurn(None)
-                refresh()
-        elif mouseY in range(460, 610) and rolled:
+    if not rolled and mouseX in range(width/2 - 75, width/2 + 75) and mouseY in range(height/2 - 75, height/2 + 75):
+        main.currentScene.append(main.scenes.get("dice"))
+    elif mouseX in range(width/2-150, width/2+150):
+        if mouseY in range(height/4-50, height/4+50):
+            main.gameController.nextPlayer()
+            main.gameController.startTurn(None)
+            refresh()
+        elif mouseY in range(height/2-81, height/2+81):
             main.currentScene.append(main.scenes.get("event"))
-            # print('klikblauw')
-    elif mouseX in range(1300, 1345):
+    if mouseX in range(1300, 1345):
         if player.hasBoat():
             if mouseY in range(120, 140):
                 # sell button mechanism
@@ -134,29 +132,35 @@ def diceButton():
     
     stroke(0)
     strokeWeight(4)
-    square(600, 190, 150)
+    square(width/2 - 75, height/2 - 75, 150)
     noStroke()
-    image(dicebttn, 600, 190, 150, 150)
+    image(dicebttn, width/2 - 75, height/2 - 75, 150, 150)
     # fill (255, 0, 0)
     # text(diceText, 700, 150)
     # fill (255, 0, 0)
     # square(600, 190, 150)
     
 def eventButton():
-    global eventText
+    global cardback
     
-    fill (0, 0, 255)
-    text(eventText, 700, 420)
-    fill (0, 0, 255)
-    square(600, 460, 150)
+    pushMatrix()
+    translate(width/2, height/2)
+    image(cardback, -150, -81, 300, 162)
+    popMatrix()
+    
+    # fill (0, 0, 255)
+    # text(eventText, 700, 420)
+    # fill (0, 0, 255)
+    # square(600, 460, 150)
+    
     
 def endTurnButton():
     global endText
     
-    fill(255, 0, 0)
-    text(endText, 700, 150)
-    fill (255, 0, 0)
-    square(600, 190, 150)
+    fill (100 if mouseX in range(width/2-150, width/2+150) and mouseY in range(height/4-50, height/4+50) else 0)
+    rect(width/2-150, height/4-50, 300, 100, 10)
+    fill(255)
+    text(endText, width/2-150, height/4-50, 300, 100)
     
 def buttons():
     global player
