@@ -1,7 +1,9 @@
 import random
 
 def setup():
-    global one, two, three, four, five, six, step, before, min_duration, elapsed, xMap, yMap, left_x_step, left_y_step, right_x_step, right_y_step, left_angle_x, left_angle_y, right_angle_x, right_angle_y
+    global one, two, three, four, five, six, step, before, min_duration, max_duration, elapsed, xMap, yMap, left_x_step, left_y_step, right_x_step, right_y_step
+    global left_angle_x, left_angle_y, right_angle_x, right_angle_y, left_index_x, left_index_y, right_index_x, right_index_y
+    global saved_left_x, saved_left_y, saved_right_x, saved_right_y
     
     size(1280, 720, P3D)
     # frameRate(10)
@@ -25,8 +27,13 @@ def setup():
     left_index_y = -1
     right_index_x = -1
     right_index_y = -1
+    saved_left_x = 0
+    saved_left_y = 0
+    saved_right_x = 0
+    saved_right_y = 0
     before = True
     min_duration = 12
+    max_duration = 60
     elapsed = 0
     xMap = {
                 '1': [3*PI/2, 3*PI/2],
@@ -46,7 +53,8 @@ def setup():
             }
     
 def draw():
-    global before, min_duration, elapsed, step, xMap, yMap, left_angle_x, left_angle_y, right_angle_x, right_angle_y
+    global before, min_duration, max_duration, elapsed, step, xMap, yMap, left_angle_x, left_angle_y, right_angle_x, right_angle_y
+    global saved_left_x, saved_left_y, saved_right_x, saved_right_y
     
     if elapsed >= min_duration and frameCount%5 == 0:
         # elapsed = 0
@@ -60,7 +68,7 @@ def draw():
             checkAngle(angle + PI, right_angle_x, 'rx')
         if right_y_step:
             checkAngle(angle + PI, right_angle_y, 'ry')
-        if not left_x_step and not left_y_step and not right_x_step and not right_y_step:
+        if elapsed >= max_duration or (not left_x_step and not left_y_step and not right_x_step and not right_y_step):
             print()
             step = False
             elapsed = 0
@@ -71,13 +79,13 @@ def draw():
         #create a matrix for the first cube
         pushMatrix()
         translate(width/2 - 125, height/2)
-        drawDice(left_x_step, left_y_step, left_angle_x, left_angle_y, PI)
+        drawDice(left_x_step, left_y_step, saved_left_x, saved_left_y, PI)
         popMatrix()
     
         #create a matrix for the second cube
         pushMatrix()
         translate(width/2 + 125, height/2)
-        drawDice(right_x_step, right_y_step, right_angle_x, right_angle_y)
+        drawDice(right_x_step, right_y_step, saved_right_x, saved_right_y)
         popMatrix()
         if before or step == 0: rect(width/2 - 225, 3*height/4 - 50, 450, 80, 10)
         fill(0)
@@ -86,7 +94,7 @@ def draw():
         buttonText = "Click here to roll the dices" if before else "Click here to continue" if step == 0 else ""
         text(buttonText, width/2, 3*height/4)
         fill(255)
-        if step == 1:
+        if step:
             elapsed += 1
     
 def drawDice(x_step, y_step, angle_x, angle_y, lead = 0):
@@ -132,6 +140,7 @@ def drawDice(x_step, y_step, angle_x, angle_y, lead = 0):
     
 def checkAngle(angle, coordinates, target):
     global left_x_step, left_y_step, right_x_step, right_y_step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, left_index_x, left_index_y, right_index_x, right_index_y
+    global saved_left_x, saved_left_y, saved_right_x, saved_right_y
     
     for coordinate in coordinates:
         leftbound = coordinate - (1.0/8.0*PI)
@@ -140,16 +149,23 @@ def checkAngle(angle, coordinates, target):
             print("{} is near coordinate {}".format(angle, coordinate))
             if target == 'lx' and (left_index_y == -1 or left_angle_x.index(coordinate) == left_index_y):
                 left_x_step = False
+                saved_left_x = angle
                 left_index_x = left_angle_x.index(coordinate)
+                return
             elif target == 'ly' and (left_index_x == -1 or left_angle_y.index(coordinate) == left_index_x):
                 left_y_step = False
+                saved_left_y = angle
                 left_index_y = left_angle_y.index(coordinate)
+                return
             elif target == 'rx' and (right_index_y == -1 or right_angle_x.index(coordinate) == right_index_y):
                 right_x_step = False
+                saved_right_x = angle
                 right_index_x = right_angle_x.index(coordinate)
             elif target == 'ry' and (right_index_x == -1 or right_angle_y.index(coordinate) == right_index_x):
                 right_y_step = False
+                saved_right_y = angle
                 right_index_y = right_angle_y.index(coordinate)
+                return
     
 def mousePressed():
     global before, step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, xMap, yMap
