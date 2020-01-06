@@ -45,7 +45,7 @@ def draw():
     for x in range(0, len(names)):
         fill(255)
         text(names[x], width/4, height/4 + x*100, width/2, 100)
-    fill(0, 0, 255)
+    fill(0, 0, 0)
     rect(3*width/8, 3*height/4, width/4, 100, 10)
     fill(255)
     text(buttonText, 3*width/8, 3*height/4, width/4, 100)

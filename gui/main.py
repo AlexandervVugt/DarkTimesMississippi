@@ -5,7 +5,7 @@ import logic.GameController as GameController
 global currentScene, scenes, game, gameController
 
 def setup():
-    global currentScene, scenes, bg
+    global currentScene, scenes, bg, logo
     bg = loadImage("background.png")
     
     # currentScene is used like a stack
@@ -47,7 +47,7 @@ def disable_sound():
     sound.pause()
     
 def draw():
-    image(bg, 0, 0)
+    image(bg, 0, 0, width, height)
     global currentScene
     
     currentScene[-1].draw()

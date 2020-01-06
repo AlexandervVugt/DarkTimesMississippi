@@ -21,15 +21,15 @@ def draw():
     image(bg, 0, 0)
     square(width/2 - 200, height/2 - 75, 150)
     square(width/2 + 50, height/2 - 75, 150)
-    rect(width/2 - 225, 3*height/4 - 50, 450, 80, 10)
-    fill(0)
+    rect(width/2 - 250, 3*height/4 - 50, 500, 80, 10)
+    fill(255)
     image(dice1, width/2 - 200, height/2 - 75, 150, 150)
     image(dice2, width/2 + 50, height/2 - 75, 150, 150)
     textAlign(CENTER)
     textSize(32)
     buttonText = "Click here to roll the dices" if active else "Click here to continue"
     text(buttonText, width/2, 3*height/4)
-    fill(255)
+    fill(0)
     
 def roll():
     global dice1, dice2, cube, active, result
