@@ -2,7 +2,7 @@ import main, turn
 import logic.Player as Player
 
 def setup():
-    global names, input, title, buttonText, buttonX, buttonY, alph, bg, font
+    global names, input, title, buttonText, buttonX, buttonY, alph, bg, font, buttonA, buttonB, buttonC, buttonD
     names = []
     input = ""
     title = "Please enter the names of the players who will play."
