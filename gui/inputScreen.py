@@ -2,7 +2,7 @@ import main, turn
 import logic.Player as Player
 
 def setup():
-    global names, input, title, buttonText, buttonX, buttonY, alph, bg, font, buttonA, buttonB, buttonC, buttonD
+    global names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, planks, plankslight
     names = []
     input = ""
     title = "Please enter the names of the players who will play."
@@ -15,21 +15,22 @@ def setup():
     buttonD = range(0, 50)
     alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     bg = loadImage("background.png")
-    font = loadFont('BanglaMN-48.vlw')
+    planks = loadImage("woodenplanks.png")
+    planks.resize(100, 50)
+    plankslight = loadImage("woodenplankslight.png")
+    plankslight.resize(100, 50)
     
 def draw():
     global names, input, title, buttonText
     image(bg, 0, 0)
     
-    fill(0, 0, 0)
-    rect(0, 0, 100, 50)
-    fill(255, 255, 255)
+    image(plankslight, 0, 0)
+    fill(217, 216, 114)
     textSize(25)
     text('BACK', 50, 25)
     if ((mouseX in buttonC) and (mouseY in buttonD)):
-        fill(100, 100, 100)
-        rect(0, 0, 100, 50)
-        fill(255, 255, 255)
+        image(planks, 0, 0)
+        fill(217, 216, 114)
         textSize(25)
         text('BACK', 50, 25)
     
@@ -88,6 +89,10 @@ def mousePressed():
         turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
     if mouseX in buttonC and mouseY in buttonD:
+        image(plankslight, 0, 0)
+        fill(217, 216, 114)
+        textSize(25)
+        text('BACK', 50, 25)
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("startScreen"))
         

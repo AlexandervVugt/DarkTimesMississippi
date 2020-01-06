@@ -31,6 +31,20 @@ def setup():
     
     for scene in scenes.values():
         scene.setup()
+        
+def setup_sound(file):
+    global sound
+    
+    sound = file
+    sound.amp(0.50)
+    enable_sound()
+    
+def enable_sound():
+    sound.play()
+    sound.loop()
+    
+def disable_sound():
+    sound.pause()
     
 def draw():
     image(bg, 0, 0, width, height)
