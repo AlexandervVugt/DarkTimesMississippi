@@ -2,8 +2,12 @@ add_library('sound')
 import main
 
 def setup():
-    global bg, volumeON, volumeOFF, s, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
+    global bg, planks, plankslight, volumeON, volumeOFF, s, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     bg = loadImage("background.png")
+    planks = loadImage("woodenplanks.png")
+    planks.resize(100, 50)
+    plankslight = loadImage("woodenplankslight.png")
+    plankslight.resize(100, 50)
     volumeON = loadImage("volumeON.png")
     volumeON.resize(100, 100)
     volumeOFF = loadImage("volumeOFF.png")
@@ -23,14 +27,12 @@ def draw():
     textSize(75)
     text('Settings', 525, 200)
     
-    fill(0, 0, 0)
-    rect(0, 0, 100, 50)
+    image(plankslight, 0, 0)
     fill(255, 255, 255)
     textSize(25)
     text('BACK', 10, 35)
     if ((mouseX in buttonA) and (mouseY in buttonB)):
-        fill(100, 100, 100)
-        rect(0, 0, 100, 50)
+        image(planks, 0, 0)
         fill(255, 255, 255)
         textSize(25)
         text('BACK', 10, 35)
@@ -46,6 +48,10 @@ def draw():
 def mousePressed():
     global s, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     if mouseX in buttonA and mouseY in buttonB:
+        image(plankslight, 0, 0)
+        fill(255, 255, 255)
+        textSize(25)
+        text('BACK', 10, 35)
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("startScreen"))
     if mouseX in buttonC and mouseY in buttonD:

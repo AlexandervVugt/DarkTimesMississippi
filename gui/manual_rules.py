@@ -1,11 +1,15 @@
 import main
 
 def setup():
-    global x, bg, wood, font, li, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
+    global x, bg, wood, planks, plankslight, font, li, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     x = 0
     bg = loadImage("background.png")
     wood = loadImage("woodtexture.png")
     wood.resize(600, 450)
+    planks = loadImage("woodenplanks.png")
+    planks.resize(100, 50)
+    plankslight = loadImage("woodenplankslight.png")
+    plankslight.resize(100, 50)
     font = loadFont('BanglaMN-48.vlw')
     li = [
           "The story behind this board game stems from the rural areas \nnext to the Mississippi river, near the city of New Orleans, \nLouisiana (USA). \nThe farmers in this area had a tradition to prove \ntheir manliness. \nThis tradition involved young men coming of age, \nwho would set sail for the city of New Orleans with goods \nto sell, on a self-made boat. \nWhile thee play this game for amusement, \nthe journey to New Orleans was never without dangers. \nAll sorts of threats were waiting for travellers, \nand more then once a sailer did not return from their journey. \nFor those who did return, awaited fortune \nand respect from the elderly. \nGo now, those brave enough, set sail for fortune, \nand glory shall await thou who returns before all others!",
@@ -28,15 +32,13 @@ def draw():
     textFont(font, 75)
     text('Manual & Rules', 375, 200)
     
-    fill(0, 0, 0)
-    rect(0, 0, 100, 50)
-    fill(255, 255, 255)
+    image(plankslight, 0, 0)
+    fill(210, 180, 140)
     textSize(25)
     text('BACK', 10, 35)
     if ((mouseX in buttonA) and (mouseY in buttonB)):
-        fill(100, 100, 100)
-        rect(0, 0, 100, 50)
-        fill(255, 255, 255)
+        image(planks, 0, 0)
+        fill(210, 180, 140)
         textSize(25)
         text('BACK', 10, 35)
     
@@ -47,27 +49,23 @@ def draw():
     text(li[x], 395, 270)
     
     if x < 2:
-        fill(0, 0, 0)
-        rect(1125, 450, 100, 50)
+        image(plankslight, 1125, 450)
         fill(255, 255, 255)
         textSize(25)
         text('NEXT', 1140, 485)
         if ((mouseX in buttonC) and (mouseY in buttonD)):
-            fill(100, 100, 100)
-            rect(1125, 450, 100, 50)
+            image(planks, 1125, 450)
             fill(255, 255, 255)
             textSize(25)
             text('NEXT', 1140, 485)
     
     if x > 0:
-        fill(0, 0, 0)
-        rect(150, 450, 100, 50)
+        image(plankslight, 150, 450)
         fill(255, 255, 255)
         textSize(25)
         text('BACK', 160, 485)
         if ((mouseX in buttonE) and (mouseY in buttonF)):
-            fill(100, 100, 100)
-            rect(150, 450, 100, 50)
+            image(planks, 150, 450)
             fill(255, 255, 255)
             textSize(25)
             text('BACK', 160, 485)
@@ -80,24 +78,28 @@ def draw():
 def mousePressed():
     global x, buttonA, buttonB, buttonC, buttonD
     if mouseX in buttonA and mouseY in buttonB:
+        image(plankslight, 0, 0)
+        fill(255, 255, 255)
+        textSize(25)
+        text('BACK', 10, 35)
         main.currentScene.pop()
         main.currentScene.append(main.scenes.get("startScreen"))
         x = 0
     if mouseX in buttonC and mouseY in buttonD:
-        fill(0, 0, 0)
-        rect(1125, 450, 100, 50)
-        fill(255, 255, 255)
-        textSize(25)
-        text('NEXT', 1140, 485)
+        if x < 2:
+            image(plankslight, 1125, 450)
+            fill(255, 255, 255)
+            textSize(25)
+            text('NEXT', 1140, 485)
         x = x + 1
         if x == 3:
             x = 2
     if mouseX in buttonE and mouseY in buttonF:
-        fill(0, 0, 0)
-        rect(150, 450, 100, 50)
-        fill(255, 255, 255)
-        textSize(25)
-        text('BACK', 160, 485)
+        if x > 0:
+            image(plankslight, 150, 450)
+            fill(255, 255, 255)
+            textSize(25)
+            text('BACK', 160, 485)
         x = x - 1
         if x == -1:
             x = 0
