@@ -7,8 +7,8 @@ def setup():
     main.setup()
     s = SoundFile(this, 'epicmusic.mp3')
     s.amp(0.50)
-    s.play()
-    s.loop()
+    #s.play()
+    #s.loop()
     
 def draw():
     main.draw()

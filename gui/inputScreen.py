@@ -2,7 +2,7 @@ import main, turn
 import logic.Player as Player
 
 def setup():
-    global names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg
+    global names, input, title, buttonText, buttonX, buttonY, alph, bg, font, buttonA, buttonB, buttonC, buttonD
     names = []
     input = ""
     title = "Please enter the names of the players who will play."
@@ -15,6 +15,7 @@ def setup():
     buttonD = range(0, 50)
     alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     bg = loadImage("background.png")
+    font = loadFont('BanglaMN-48.vlw')
     
 def draw():
     global names, input, title, buttonText
@@ -43,7 +44,7 @@ def draw():
     for x in range(0, len(names)):
         fill(255)
         text(names[x], width/4, height/4 + x*100, width/2, 100)
-    fill(0, 0, 255)
+    fill(0, 0, 0)
     rect(3*width/8, 3*height/4, width/4, 100, 10)
     fill(255)
     text(buttonText, 3*width/8, 3*height/4, width/4, 100)
