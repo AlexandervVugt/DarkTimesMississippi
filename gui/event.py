@@ -1,7 +1,9 @@
 import main
 
 def setup():
-    global cardFront, cardBack, state, framePointer, fading
+    global cardFront, cardBack, state, framePointer, fading, bg
+    
+    bg = loadImage("background.png")
     cardFront = loadImage("card_front.png")
     cardBack = loadImage("card_back.png")
     state = "before"
@@ -11,7 +13,7 @@ def setup():
 def draw():
     global cardFront, cardBack, state, framePointer, fading, cardText
     
-    background(0, 255, 0)
+    image(bg, 0, 0)
     translate(width/2, height/2)
     if state == "before":
         textAlign(CENTER)

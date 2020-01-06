@@ -1,6 +1,6 @@
-import logic.Game as Game
-import logic.Player as Player
-import logic.Turn as Turn
+import Game as Game
+import Player as Player
+import Turn as Turn
 
 class GameController:
     def __init__(self, game = Game.Game()):

@@ -1,31 +1,65 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText
+    global eventText, diceText, endText, bg, bgs, font, dicebttn, cardback, logo
     
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
     endText = 'END TURN'
+    bg = loadImage("background.png")
+    bgs = loadImage("woodtexture.png")
+    bgs.resize(200, 200)
+    font = loadFont('BanglaMN-48.vlw')
+    dicebttn = loadImage("dicebttn.png")
+    cardback = loadImage("card_back.png")
+    logo = loadImage("GameLogo.png")
     
 def draw():
     global rolled
     
     textAlign(CENTER, CENTER)
-    background(0, 255, 0)
+    image(bg, 0, 0)
     fill (150, 0, 0)
     textSize(50)
-    text('DarkTimesMississippi',700,70)
-
+    image(logo, 350, 1, 700, 250)
     
-    for i in range(len(main.game.getPlayers())+1):
+
+    playerlist = main.game.getPlayers()
+    for i in range(len(playerlist)+1):
         if i == 1:
-            square(1, 1, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 1,)
+            #square(1, 1, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 1, 200, 200)
         if i == 2:
-            square(1, 210, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 210,)
+            #square(1, 210, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 100, 200, 420)
         if i == 3:
-            square(1, 420, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 420,)
+            #square(1, 420, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 200, 200, 640)
         if i == 4:
-            square(1, 630, 200);
+            fill (211, 211, 211)
+            image(bgs, 1, 630,)
+            #square(1, 630, 200);
+            textSize(18)
+            textFont(font, 18)
+            fill (217, 216, 114)
+            text(playerlist[i-1].toString(), 2, 300, 200, 860)
+        
+        cursor(ARROW)
 
                 
         
@@ -37,12 +71,11 @@ def draw():
         endTurnButton()
         eventButton()
     
-    fill(211, 211, 211)
-    rect(width-350, 0, 350, 310)
-    textSize(25)
-    fill(0, 0, 0)
+    image(bgs, 1080, 1, 360, 320)
+    textSize(22)
+    fill(217, 216, 114)
     textAlign(TOP)
-    text(player.toString(), width-350, 0, width, 500)
+    text(player.toString(), width-340, 50, width, 500)
     buttons()
     
 def mousePressed():
@@ -50,19 +83,16 @@ def mousePressed():
     
     # print("x: " + str(mouseX))
     # print("y: " + str(mouseY))
-    if mouseX in range(600,750):
-        if mouseY in range(190,340):
-            if not rolled:
-                main.currentScene.append(main.scenes.get("dice"))
-                # print('klikrood')
-            else:
-                main.gameController.nextPlayer()
-                main.gameController.startTurn(None)
-                refresh()
-        elif mouseY in range(460, 610) and rolled:
+    if not rolled and mouseX in range(width/2 - 75, width/2 + 75) and mouseY in range(height/2 - 75, height/2 + 75):
+        main.currentScene.append(main.scenes.get("dice"))
+    elif mouseX in range(width/2-150, width/2+150):
+        if mouseY in range(height/4+20, height/4+120):
+            main.gameController.nextPlayer()
+            main.gameController.startTurn(None)
+            refresh()
+        elif mouseY in range(height/2-81, height/2+81):
             main.currentScene.append(main.scenes.get("event"))
-            # print('klikblauw')
-    elif mouseX in range(1300, 1345):
+    if mouseX in range(1300, 1345):
         if player.hasBoat():
             if mouseY in range(120, 140):
                 # sell button mechanism
@@ -103,26 +133,37 @@ def keyTyped():
 def diceButton():
     global diceText
     
-    fill (255, 0, 0)
-    text(diceText, 700, 150)
-    fill (255, 0, 0)
-    square(600, 190, 150)
+    stroke(0)
+    strokeWeight(4)
+    square(width/2 - 75, height/2 - 75, 150)
+    noStroke()
+    image(dicebttn, width/2 - 75, height/2 - 75, 150, 150)
+    # fill (255, 0, 0)
+    # text(diceText, 700, 150)
+    # fill (255, 0, 0)
+    # square(600, 190, 150)
     
 def eventButton():
-    global eventText
+    global cardback
     
-    fill (0, 0, 255)
-    text(eventText, 700, 420)
-    fill (0, 0, 255)
-    square(600, 460, 150)
+    pushMatrix()
+    translate(width/2, height/2)
+    image(cardback, -150, -81, 300, 162)
+    popMatrix()
+    
+    # fill (0, 0, 255)
+    # text(eventText, 700, 420)
+    # fill (0, 0, 255)
+    # square(600, 460, 150)
+    
     
 def endTurnButton():
     global endText
     
-    fill(255, 0, 0)
-    text(endText, 700, 150)
-    fill (255, 0, 0)
-    square(600, 190, 150)
+    fill (100 if mouseX in range(width/2-150, width/2+150) and mouseY in range(height/4+20, height/4+120) else 0)
+    rect(width/2-150, height/4+20, 300, 100, 10)
+    fill(255)
+    text(endText, width/2-150, height/4+20, 300, 100)
     
 def buttons():
     global player
@@ -132,16 +173,16 @@ def buttons():
     if player.hasBoat():
         editButton(195.0)
         
-        fill(255, 255, 255)
+        fill(0)
         rect(1300, 120, 45, 20)
         textSize(15)
-        fill(0, 0, 0)
+        fill(255, 255, 255)
         text('SELL', 1305, 120, 1340, 140)
         
-        fill(255, 255, 255)
+        fill(0)
         rect(1350, 120, 75, 20)
         textSize(15)
-        fill(0, 0, 0)
+        fill(255, 255, 255)
         text('DESTROY', 1355, 120, 1420, 140)
     else:
         fill(255, 255, 255)
@@ -157,10 +198,10 @@ def buttons():
         text('Farm reached, VICTORIOUS!', width-275, 290, width, 310)
     
 def editButton(y):
-    fill(255, 255, 255)
+    fill(0)
     rect(1300, y, 45, 20)
     textSize(15)
-    fill(0, 0, 0)
+    fill(255, 255, 255)
     text('EDIT', 1305, y, 1340, y+20)
 
 def refresh():
