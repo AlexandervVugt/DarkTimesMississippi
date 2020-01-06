@@ -120,7 +120,8 @@ def draw():
         translate(width/2 + 125, height/2)
         drawDice(right_x_step, right_y_step, saved_right_x, saved_right_y)
         popMatrix()
-        if before or step == 0: rect(width/2 - 225, 3*height/4 - 50, 450, 80, 10)
+        if before or step == 0: 
+            rect(width/2 - 250, 3*height/4 - 50, 500, 80, 10)
         fill(0)
         textAlign(CENTER)
         textSize(32)
