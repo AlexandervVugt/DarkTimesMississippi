@@ -29,7 +29,8 @@ def setup():
         scene.setup()
     
 def draw():
-    image(bg, 0, 0)
+    if currentScene[-1] not in [scenes.get("dice"), scenes.get("victorious")] or frameCount%5 == 0:
+        image(bg, 0, 0)
     global currentScene
     
     currentScene[-1].draw()

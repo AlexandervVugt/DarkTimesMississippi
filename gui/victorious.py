@@ -22,8 +22,9 @@ def draw():
     
     i = 0
     
-    while i < 10:
-        ellipse(random(width), random(height), 5, 5)
+    while i < 20 and frameCount%5 == 0:
+        fill(random(255), random(255), random(255))
+        ellipse(random(width), random(height), 15, 15)
         i += 1
         
     fill(255, 255, 255)
