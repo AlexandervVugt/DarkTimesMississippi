@@ -1,4 +1,5 @@
 import random
+# import main
 
 def setup():
     global one, two, three, four, five, six, step, before, min_duration, max_duration, elapsed, xMap, yMap, left_x_step, left_y_step, right_x_step, right_y_step
@@ -32,8 +33,8 @@ def setup():
     saved_right_x = 0
     saved_right_y = 0
     before = True
-    min_duration = 1
-    max_duration = 12
+    min_duration = 12
+    max_duration = 36
     elapsed = 0
     xMap = {
                 '1': [PI/2, PI/2],
@@ -70,10 +71,10 @@ def draw():
         if right_y_step:
             checkAngle(angle + PI, right_angle_y, 'ry')
         if not left_x_step and not left_y_step and not right_x_step and not right_y_step:
-            print(saved_left_x)
-            print(saved_left_y)
-            print(saved_right_x)
-            print(saved_right_y)
+            # print(saved_left_x)
+            # print(saved_left_y)
+            # print(saved_right_x)
+            # print(saved_right_y)
             step = False
             elapsed = 0
         elif elapsed >= max_duration:
@@ -200,7 +201,7 @@ def checkAngle(angle, coordinates, target):
                 return
     
 def mousePressed():
-    global before, step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, xMap, yMap
+    global before, step, left_angle_x, left_angle_y, right_angle_x, right_angle_y, xMap, yMap, result
     
     if mouseX in range(width/2 - 225, width/2 + 225) and mouseY in range(3*height/4 - 50, 3*height/4 + 30):
         if before:
@@ -208,6 +209,7 @@ def mousePressed():
             right = random.randrange(1, 7)
             print(left)
             print(right)
+            result = left + right
             left_angle_x = xMap.get(str(left))
             left_angle_y = yMap.get(str(left))
             right_angle_x = xMap.get(str(right))
@@ -215,9 +217,9 @@ def mousePressed():
             elapsed = 0
             step = True
             before = False
-        elif step == 0:
+        elif not step:
             setup()
-            # main.gameController.getTurnInfo().setSteps(1)
+            # main.gameController.getTurnInfo().setSteps(result)
             # main.currentScene.pop()
 
 def keyPressed():

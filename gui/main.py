@@ -30,7 +30,8 @@ def setup():
 def draw():
     global currentScene
     
-    background(0, 255, 0)
+    if not currentScene[-1] == scenes.get("dice") or frameCount%5 == 0:
+        background(0, 255, 0)
     currentScene[-1].draw()
     
 def keyTyped():

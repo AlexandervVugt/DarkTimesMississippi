@@ -1,7 +1,7 @@
 import main
 
 def setup():
-    size(1440, 900)
+    size(1440, 900, P3D)
     main.setup()
     
 def draw():
