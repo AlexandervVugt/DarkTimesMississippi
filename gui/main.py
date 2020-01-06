@@ -1,11 +1,11 @@
-import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious
+import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious, eventScreen, startScreen, manual_rules, eventScreen, settingsScreen
 import logic.Game as Game
 import logic.GameController as GameController
 
 global currentScene, scenes, game, gameController
 
 def setup():
-    global currentScene, scenes, bg
+    global currentScene, scenes, bg, logo
     bg = loadImage("background.png")
     
     # currentScene is used like a stack
@@ -13,26 +13,44 @@ def setup():
     # to replace the current scene, use pop() and append(<scene you want to show>) to replace the scene
     # to go back to the previous scene, use pop()
     # to call the current scene, use currentScene[-1]
-    currentScene = [inputScreen]
+    currentScene = [startScreen]
     #create a map for scenes and their names
     scenes = {
+              "startScreen": startScreen,
               "inputScreen": inputScreen,
               "event": event,
               "dice": dice,
               "turn": turn,
               "popup_modify": popup_modify,
               "popup_confirm": popup_confirm,
-              "victorious": victorious
+              "victorious": victorious,
+              "manual_rules": manual_rules,
+              "eventScreen": eventScreen,
+              "settingsScreen": settingsScreen
               }
     
     for scene in scenes.values():
         scene.setup()
+        
+def setup_sound(file):
+    global sound
+    
+    sound = file
+    sound.amp(0.50)
+    enable_sound()
+    
+def enable_sound():
+    sound.play()
+    sound.loop()
+    
+def disable_sound():
+    sound.pause()
     
 def draw():
-    if currentScene[-1] not in [scenes.get("dice"), scenes.get("victorious")] or frameCount%5 == 0:
-        image(bg, 0, 0)
     global currentScene
     
+    if not currentScene[-1] == scenes.get("dice") or frameCount%5 == 0:
+        image(bg, 0, 0, width, height)
     currentScene[-1].draw()
     
 def keyTyped():

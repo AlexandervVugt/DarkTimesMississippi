@@ -1,5 +1,5 @@
-import logic.Player as Player
-import logic.Event as Event
+import Player as Player
+import Event as Event
 import json
 import random
 

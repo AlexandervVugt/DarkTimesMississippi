@@ -3,12 +3,10 @@ import main
 
 
 def setup():
-    size(1440, 900) 
+    size(1440, 900, P3D)
     main.setup()
-    s = SoundFile(this, 'epicmusic.mp3')
-    s.amp(0.50)
-    s.play()
-    s.loop()
+    sound = SoundFile(this, 'epicmusic.mp3')
+    main.setup_sound(sound)
     
 def draw():
     main.draw()
