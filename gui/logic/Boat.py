@@ -12,7 +12,10 @@ class Boat:
         Returns False if the added load would exceed the capacity, True otherwise.
         """
 
-        if amount + self.__load > self.__capacity:
+        if amount < 0:
+            self.unload(-amount)
+            return True
+        elif amount + self.__load > self.__capacity:
             return False
         else:
             self.__load += amount
@@ -24,6 +27,9 @@ class Boat:
         If the amount is bigger than the load, the load is set to 0.
         """
 
+        if amount < 0:
+            self.load(-amount)
+            return
         self.__load -= amount
         if self.__load < 0:
             self.__load = 0
@@ -53,10 +59,10 @@ class Boat:
 
         if not isinstance(other, Boat):
             return False
-        return self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__capacity
+        return self.__load == other.__load and self.__capacity == other.__capacity and self.__sellPrice == other.__sellPrice
 
     def toString(self):
         """Returns a human-readable String representation of this Boat"""
 
-        template = "Boat:\n\tCapacity: {0:d}\n\tLoad:{1:d}\n\tSell price: {2:d}"
+        template = "Boat:\n\tCapacity: {0:d}\n\tLoad: {1:d}\n\tSell price: {2:d}"
         return template.format(self.__capacity, self.__load, self.__sellPrice)

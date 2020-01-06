@@ -1,4 +1,4 @@
-import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious
+import inputScreen, event, dice, turn, popup_modify, popup_confirm, victorious, eventScreen, startScreen, manual_rules, eventScreen, settingsScreen
 import logic.Game as Game
 import logic.GameController as GameController
 
@@ -13,16 +13,20 @@ def setup():
     # to replace the current scene, use pop() and append(<scene you want to show>) to replace the scene
     # to go back to the previous scene, use pop()
     # to call the current scene, use currentScene[-1]
-    currentScene = [inputScreen]
+    currentScene = [startScreen]
     #create a map for scenes and their names
     scenes = {
+              "startScreen": startScreen,
               "inputScreen": inputScreen,
               "event": event,
               "dice": dice,
               "turn": turn,
               "popup_modify": popup_modify,
               "popup_confirm": popup_confirm,
-              "victorious": victorious
+              "victorious": victorious,
+              "manual_rules": manual_rules,
+              "eventScreen": eventScreen,
+              "settingsScreen": settingsScreen
               }
     
     for scene in scenes.values():

@@ -58,6 +58,8 @@ def draw():
             textFont(font, 18)
             fill (217, 216, 114)
             text(playerlist[i-1].toString(), 2, 300, 200, 860)
+        
+        cursor(ARROW)
 
                 
         
