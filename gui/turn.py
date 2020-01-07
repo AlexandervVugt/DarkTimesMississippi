@@ -72,17 +72,17 @@ def draw():
         eventButton()
     
     image(bgs, 1080, 1, 360, 320)
-    textSize(22)
+    textSize(28)
     fill(217, 216, 114)
     textAlign(TOP)
-    text(player.toString(), width-340, 50, width, 500)
+    text(player.toString(), width-340, 20, width, 320)
     buttons()
     
 def mousePressed():
     global main
     
-    # print("x: " + str(mouseX))
-    # print("y: " + str(mouseY))
+    print("x: " + str(mouseX))
+    print("y: " + str(mouseY))
     if not rolled and mouseX in range(width/2 - 75, width/2 + 75) and mouseY in range(height/2 - 75, height/2 + 75):
         main.currentScene.append(main.scenes.get("dice"))
     elif mouseX in range(width/2-150, width/2+150):
@@ -168,41 +168,42 @@ def endTurnButton():
 def buttons():
     global player
 
-    editButton(45.0)
-    editButton(80.0)
+    textAlign(CENTER, CENTER)
+    editButton(55)
+    editButton(95)
     if player.hasBoat():
-        editButton(195.0)
+        editButton(220)
         
         fill(0)
-        rect(1300, 120, 45, 20)
+        rect(1360, 140, 60, 35)
         textSize(15)
-        fill(255, 255, 255)
-        text('SELL', 1305, 120, 1340, 140)
+        fill(255)
+        text('SELL', 1365, 145, 1415, 170)
         
         fill(0)
-        rect(1350, 120, 75, 20)
+        rect(1250, 140, 100, 35)
         textSize(15)
-        fill(255, 255, 255)
-        text('DESTROY', 1355, 120, 1420, 140)
+        fill(255)
+        text('DESTROY', 1255, 145, 1345, 170)
     else:
-        fill(255, 255, 255)
-        rect(1300, 120, 65, 20)
+        fill(0)
+        rect(1360, 140, 60, 35)
         textSize(15)
-        fill(0, 0, 0)
-        text('CREATE', 1305, 120, 1360, 140)
+        fill(255)
+        text('CREATE', 1365, 145, 1415, 170)
     if player.getGold() >= 30:
         fill(255, 255, 255)
-        rect(width-350, 290, 350, 20)
+        rect(width-340, 295, 320, 25)
         textSize(15)
         fill(0, 0, 0)
-        text('Farm reached, VICTORIOUS!', width-275, 290, width, 310)
+        text('Farm reached, VICTORIOUS!', width-335, 300, width - 25, 315)
     
 def editButton(y):
     fill(0)
-    rect(1300, y, 45, 20)
+    rect(1360, y, 60, 35)
     textSize(15)
-    fill(255, 255, 255)
-    text('EDIT', 1305, y, 1340, y+20)
+    fill(255)
+    text('EDIT', 1365, y, 1415, y+25)
 
 def refresh():
     global player
