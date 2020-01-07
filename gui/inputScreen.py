@@ -16,23 +16,19 @@ def setup():
     alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     bg = loadImage("background.png")
     planks = loadImage("woodenplanks.png")
-    planks.resize(100, 50)
+    planks.resize(width/4, 100)
     plankslight = loadImage("woodenplankslight.png")
-    plankslight.resize(100, 50)
+    plankslight.resize(width/4, 100)
     
 def draw():
     global names, input, title, buttonText
     image(bg, 0, 0)
     
-    image(plankslight, 0, 0)
-    fill(217, 216, 114)
+    fill(100 if ((mouseX in buttonC) and (mouseY in buttonD)) else 0)
+    rect(0, 0, 100, 50)
+    fill(255)
     textSize(25)
     text('BACK', 50, 25)
-    if ((mouseX in buttonC) and (mouseY in buttonD)):
-        image(planks, 0, 0)
-        fill(217, 216, 114)
-        textSize(25)
-        text('BACK', 50, 25)
     
     textAlign(CENTER, CENTER)
     textSize(32)
@@ -46,8 +42,10 @@ def draw():
         fill(255)
         text(names[x], width/4, height/4 + x*100, width/2, 100)
     fill(0, 0, 0)
-    rect(3*width/8, 3*height/4, width/4, 100, 10)
-    fill(255)
+    image(planks if mouseX in buttonX and mouseY in buttonY else plankslight, 3*width/8, 3*height/4, width/4, 100)
+    fill(210, 180, 140)
+    if mouseX in buttonX and mouseY in buttonY:
+        fill(217, 216, 114)
     text(buttonText, 3*width/8, 3*height/4, width/4, 100)
     
     if (((mouseX in buttonX) and (mouseY in buttonY)) or ((mouseX in buttonC) and (mouseY in buttonD))):
