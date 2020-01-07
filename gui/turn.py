@@ -172,19 +172,19 @@ def buttons():
         editButton(195.0)
         
         fill(0)
-        rect(1300, 120, 45, 20)
+        rect(1300, 120, 45, 30)
         textSize(15)
         fill(255, 255, 255)
-        text('SELL', 1305, 120, 1340, 140)
+        text('SELL', 1305, 128, 1340, 140)
         
         fill(0)
-        rect(1350, 120, 75, 20)
+        rect(1350, 120, 90, 30)
         textSize(15)
         fill(255, 255, 255)
-        text('DESTROY', 1355, 120, 1420, 140)
+        text('DESTROY', 1355, 128, 1420, 140)
     else:
         fill(255, 255, 255)
-        rect(1300, 120, 65, 20)
+        rect(1300, 120, 65, 40)
         textSize(15)
         fill(0, 0, 0)
         text('CREATE', 1305, 120, 1360, 140)
@@ -197,10 +197,10 @@ def buttons():
     
 def editButton(y):
     fill(0)
-    rect(1300, y, 45, 20)
+    rect(1300, y, 50, 30)
     textSize(15)
     fill(255, 255, 255)
-    text('EDIT', 1305, y, 1340, y+20)
+    text('EDIT', 1305, y+8, 1340, y+20)
 
 def refresh():
     global player
