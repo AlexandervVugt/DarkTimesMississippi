@@ -178,32 +178,32 @@ def buttons():
         rect(1360, 140, 60, 35)
         textSize(15)
         fill(255)
-        text('SELL', 1365, 145, 1415, 170)
+        text('SELL', 1365, 145, 50, 25)
         
         fill(0)
         rect(1250, 140, 100, 35)
         textSize(15)
         fill(255)
-        text('DESTROY', 1255, 145, 1345, 170)
+        text('DESTROY', 1255, 145, 90, 25)
     else:
         fill(0)
         rect(1360, 140, 60, 35)
         textSize(15)
         fill(255)
-        text('CREATE', 1365, 145, 1415, 170)
+        text('CREATE', 1365, 145, 50, 25)
     if player.getGold() >= 30:
         fill(255, 255, 255)
         rect(width-340, 295, 320, 25)
         textSize(15)
         fill(0, 0, 0)
-        text('Farm reached, VICTORIOUS!', width-335, 300, width - 25, 315)
+        text('Farm reached, VICTORIOUS!', width-335, 300, 310, 15)
     
 def editButton(y):
     fill(0)
     rect(1360, y, 60, 35)
     textSize(15)
     fill(255)
-    text('EDIT', 1365, y, 1415, y+25)
+    text('EDIT', 1365, y + 5, 50, 25)
 
 def refresh():
     global player
