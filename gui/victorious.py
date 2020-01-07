@@ -30,41 +30,45 @@ def draw():
     fill(255, 255, 255)
     
     playerlist = main.game.getPlayers()
-    for i in range(len(playerlist)+1):
-        if i == 1:
-            fill (211, 211, 211)
-            image(bgs, 180, 100)
-            # square(180, 100, 200);
-            textSize(18)
-            textFont(font, 30)
-            fill (217, 216, 114)
-            text(playerlist[i-1].toString(), 2, 100, 560, 200)
-        if i == 2:
-            fill (211, 211, 211)
-            image(bgs, 480, 100)
-            # square(480, 100, 200);
-            textSize(18)
-            textFont(font, 30)
-            fill (217, 216, 114)
-            text(playerlist[i-1].toString(), 2, 100, 1160, 200)
-        if i == 3:
-            fill (211, 211, 211)
-            image(bgs, 780, 100)
-            # square(780, 100, 200);
-            textSize(18)
-            textFont(font, 30)
-            fill (217, 216, 114)
-            text(playerlist[i-1].toString(), 2, 100, 1760, 200)
-        if i == 4:
-            fill (211, 211, 211)
-            image(bgs, 1080, 100)
-            # square(1080, 100, 200);
-            textSize(18)
-            textFont(font, 30)
-            fill (217, 216, 114)
-            text(playerlist[i-1].toString(), 2, 100, 2360, 200)
+    index = 0
+    lilen = len(playerlist)
+    while index < lilen:
+        xvalue = horizontalPosition(index, lilen)
+        yvalue = 100
+        image(bgs, xvalue, yvalue)
+        textSize(18)
+        textFont(font, 30)
+        fill(217, 216, 114)
+        text(playerlist[index].toString(), xvalue, yvalue, 200, 200)
+        index += 1
     
+def horizontalPosition(index, lilen):
+    center = width/2
+    if index == 0:
+        if lilen == 2:
+            return center - 225
+        elif lilen == 3:
+            return center - 350
+        elif lilen == 4:
+            return center - 525
+    elif index == 1:
+        return center + 25 - (125 * (lilen - 2))
+        # if lilen == 2:
+        #     return center + 25
+        # elif lilen == 3:
+        #     return center - 100
+        # elif lilen == 4:
+        #     return center - 225
+    elif index == 2:
+        if lilen == 3:
+            return center + 150
+        elif lilen == 4:
+            return center + 25
+    elif index == 3:
+        return center + 275
+
 def mousePressed():
+    # print(mouseX)
     return
 
 def keyPressed():
