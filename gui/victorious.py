@@ -50,7 +50,7 @@ def horizontalPosition(index, lilen):
         elif lilen == 3:
             return center - 350
         elif lilen == 4:
-            return center - 525
+            return center - 475
     elif index == 1:
         return center + 25 - (125 * (lilen - 2))
         # if lilen == 2:
