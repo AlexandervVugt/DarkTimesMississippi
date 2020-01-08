@@ -49,7 +49,7 @@ def disable_sound():
 def draw():
     global currentScene
     
-    if not currentScene[-1] == scenes.get("dice") or frameCount%5 == 0:
+    if not currentScene[-1] in [scenes.get("dice") scenes.get("victory")] or frameCount%5 == 0:
         image(bg, 0, 0, width, height)
     currentScene[-1].draw()
     
