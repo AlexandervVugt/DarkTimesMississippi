@@ -24,13 +24,15 @@ def draw():
     global names, input, title, buttonText
     image(bg, 0, 0)
     
-    image(plankslight, 0, 0)
-    fill(217, 216, 114)
+    fill(0, 0, 0)
+    rect(0, 0, 100, 50)
+    fill(255, 255, 255)
     textSize(25)
     text('BACK', 50, 25)
     if ((mouseX in buttonC) and (mouseY in buttonD)):
-        image(planks, 0, 0)
-        fill(217, 216, 114)
+        fill(100, 100, 100)
+        rect(0, 0, 100, 50)
+        fill(255, 255, 255)
         textSize(25)
         text('BACK', 50, 25)
     
@@ -89,11 +91,11 @@ def mousePressed():
         turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
     if mouseX in buttonC and mouseY in buttonD:
-        image(plankslight, 0, 0)
-        fill(217, 216, 114)
+        fill(0, 0, 0)
+        rect(0, 0, 100, 50)
+        fill(255, 255, 255)
         textSize(25)
         text('BACK', 50, 25)
         main.currentScene.pop()
-        main.currentScene.append(main.scenes.get("startScreen"))
         
     # if mouseX in buttonA and mouseY in buttonB:

@@ -63,35 +63,41 @@ def draw():
     text(li[x], 335, 275, width/2, height/2)
     textAlign(CENTER, CENTER)
     
-    image(plankslight, 0, 0)
-    fill(210, 180, 140)
+    fill(0, 0, 0)
+    rect(0, 0, 100, 50)
+    fill(255, 255, 255)
     textSize(25)
     text('BACK', 50, 25)
     if ((mouseX in buttonA) and (mouseY in buttonB)):
-        image(planks, 0, 0)
-        fill(210, 180, 140)
+        fill(100, 100, 100)
+        rect(0, 0, 100, 50)
+        fill(255, 255, 255)
         textSize(25)
         text('BACK', 50, 25)
     
     if x < 28:
-        image(plankslight, 1190, 475)
-        fill(210, 180, 140)
+        fill(0, 0, 0)
+        rect(1190, 475, 100, 50)
+        fill(255, 255, 255)
         textSize(25)
         text('NEXT', 1240, 500)
         if ((mouseX in buttonC) and (mouseY in buttonD)):
-            image(planks, 1190, 475)
-            fill(210, 180, 140)
+            fill(100, 100, 100)
+            rect(1190, 475, 100, 50)
+            fill(255, 255, 255)
             textSize(25)
             text('NEXT', 1240, 500)
             
     if x > 0:
-        image(plankslight, 100, 475)
-        fill(210, 180, 140)
+        fill(0, 0, 0)
+        rect(100, 475, 100, 50)
+        fill(255, 255, 255)
         textSize(25)
         text('BACK', 150, 500)
         if ((mouseX in buttonE) and (mouseY in buttonF)):
-            image(planks, 100, 475)
-            fill(210, 180, 140)
+            fill(100, 100, 100)
+            rect(100, 475, 100, 50)
+            fill(255, 255, 255)
             textSize(25)
             text('BACK', 150, 500)
             
@@ -103,16 +109,17 @@ def draw():
 def mousePressed():
     global x, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     if mouseX in buttonA and mouseY in buttonB:
-        image(plankslight, 0, 0)
+        fill(0, 0, 0)
+        rect(0, 0, 100, 50)
         fill(255, 255, 255)
         textSize(25)
         text('BACK', 50, 25)
         x = 0
         main.currentScene.pop()
-        main.currentScene.append(main.scenes.get("startScreen"))
     if mouseX in buttonC and mouseY in buttonD:
         if x < 28:
-            image(plankslight, 1190, 475)
+            fill(0, 0, 0)
+            rect(1190, 475, 100, 50)
             fill(255, 255, 255)
             textSize(25)
             text('NEXT', 1240, 500)
@@ -121,10 +128,14 @@ def mousePressed():
             x = 28
     if mouseX in buttonE and mouseY in buttonF:
         if x > 0:
-            image(plankslight, 100, 475)
-            fill(255, 255, 255)
+            fill(0, 0, 0)
+            rect(100, 475, 100, 50)
+            fill(210, 180, 140)
             textSize(25)
             text('BACK', 150, 500)
         x = x - 1
         if x == -1:
             x = 0
+            
+def keyPressed():
+    return
