@@ -133,10 +133,6 @@ def keyTyped():
 def diceButton():
     global diceText
     
-    stroke(0)
-    strokeWeight(4)
-    square(width/2 - 75, height/2 - 75, 150)
-    noStroke()
     image(dicebttn, width/2 - 75, height/2 - 75, 150, 150)
     # fill (255, 0, 0)
     # text(diceText, 700, 150)
@@ -174,25 +170,25 @@ def buttons():
     if player.hasBoat():
         editButton(220)
         
-        fill(0)
+        fill(100 if mouseX in range(1360, 1420) and mouseY in range(140, 175) else 0)
         rect(1360, 140, 60, 35)
         textSize(15)
         fill(255)
         text('SELL', 1365, 145, 50, 25)
         
-        fill(0)
+        fill(100 if mouseX in range(1250, 1350) and mouseY in range(140, 175) else 0)
         rect(1250, 140, 100, 35)
         textSize(15)
         fill(255)
         text('DESTROY', 1255, 145, 90, 25)
     else:
-        fill(0)
+        fill(100 if mouseX in range(1340, 1420) and mouseY in range(140, 175) else 0)
         rect(1340, 140, 80, 35)
         textSize(15)
         fill(255)
         text('CREATE', 1345, 145, 70, 25)
     if player.getGold() >= 30:
-        fill(0)
+        fill(100 if mouseX in range(width-360, width) and mouseY in range(295, 320) else 0)
         rect(width-360, 295, 360, 25)
         textSize(15)
         fill(255)
