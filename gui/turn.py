@@ -32,7 +32,7 @@ def draw():
             #square(1, 1, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 1, 200, 200)
         if i == 2:
             fill (211, 211, 211)
@@ -40,7 +40,7 @@ def draw():
             #square(1, 210, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 100, 200, 420)
         if i == 3:
             fill (211, 211, 211)
@@ -48,7 +48,7 @@ def draw():
             #square(1, 420, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 200, 200, 640)
         if i == 4:
             fill (211, 211, 211)
@@ -56,7 +56,7 @@ def draw():
             #square(1, 630, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 300, 200, 860)
         
         cursor(ARROW)
@@ -73,7 +73,7 @@ def draw():
     
     image(bgs, 1080, 1, 360, 320)
     textSize(28)
-    fill(217, 216, 114)
+    fill(255, 225, 22)
     textAlign(TOP)
     text(player.toString(), width-340, 20, width, 320)
     buttons()
@@ -187,6 +187,13 @@ def buttons():
         textSize(15)
         fill(255)
         text('CREATE', 1345, 145, 70, 25)
+        
+        fill(100 if mouseX in range(1250, 1330) and mouseY in range(140, 175) else 0)
+        rect(1250, 140, 80, 35)
+        textSize(15)
+        fill(255)
+        text('BUY', 1255, 145, 70, 25)
+        
     if player.getGold() >= 30:
         fill(100 if mouseX in range(width-360, width) and mouseY in range(295, 320) else 0)
         rect(width-360, 295, 360, 25)
