@@ -18,7 +18,6 @@ def setup():
     buttonH = range(650, 725)
 
 def draw():
-    size(1440, 900)
     image(bg, 0, 0)
     
     textAlign(LEFT, LEFT)
