@@ -41,7 +41,7 @@ def draw():
     fill(0, 0, 0)
     rect(400, 400, 500, 75)
     textSize(50)
-    text("Music Volume:")
+    # text("Music Volume:")
     image(volumeON, 500, 500)
     image(volumeOFF, 700, 500)
     

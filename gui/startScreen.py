@@ -77,7 +77,6 @@ def draw():
 def mousePressed():
     global buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH
     if mouseX in buttonA and mouseY in buttonB:
-        if 
         image(plankslight, 450, 350)
         fill(210, 180, 140)
         textSize(50)
