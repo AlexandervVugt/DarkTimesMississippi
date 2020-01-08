@@ -31,40 +31,46 @@ def draw():
     textFont(font, 75)
     text('Manual & Rules', 375, 200)
     
-    image(plankslight, 0, 0)
-    fill(210, 180, 140)
+    fill(0, 0, 0)
+    rect(0, 0, 100, 50)
+    fill(255, 255, 255)
     textSize(25)
     text('BACK', 10, 35)
     if ((mouseX in buttonA) and (mouseY in buttonB)):
-        image(planks, 0, 0)
-        fill(210, 180, 140)
+        fill(100, 100, 100)
+        rect(0, 0, 100, 50)
+        fill(255, 255, 255)
         textSize(25)
         text('BACK', 10, 35)
     
     image(wood, 390, 250)
     
     fill(217, 216, 114)
-    textSize(17)
-    text(li[x], 395, 270)
+    textSize(16)
+    text(li[x], 410, 280)
     
     if x < 2:
-        image(plankslight, 1125, 450)
+        fill(0, 0, 0)
+        rect(1125, 450, 100, 50)
         fill(255, 255, 255)
         textSize(25)
         text('NEXT', 1140, 485)
         if ((mouseX in buttonC) and (mouseY in buttonD)):
-            image(planks, 1125, 450)
+            fill(100, 100, 100)
+            rect(1125, 450, 100, 50)
             fill(255, 255, 255)
             textSize(25)
             text('NEXT', 1140, 485)
     
     if x > 0:
-        image(plankslight, 150, 450)
+        fill(0, 0, 0)
+        rect(150, 450, 100, 50)
         fill(255, 255, 255)
         textSize(25)
         text('BACK', 160, 485)
         if ((mouseX in buttonE) and (mouseY in buttonF)):
-            image(planks, 150, 450)
+            fill(100, 100, 100)
+            rect(150, 450, 100, 50)
             fill(255, 255, 255)
             textSize(25)
             text('BACK', 160, 485)
@@ -75,18 +81,19 @@ def draw():
         cursor(ARROW)
 
 def mousePressed():
-    global x, buttonA, buttonB, buttonC, buttonD
+    global x, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     if mouseX in buttonA and mouseY in buttonB:
-        image(plankslight, 0, 0)
+        fill(0, 0, 0)
+        rect(0, 0, 100, 50)
         fill(255, 255, 255)
         textSize(25)
         text('BACK', 10, 35)
         main.currentScene.pop()
-        main.currentScene.append(main.scenes.get("startScreen"))
         x = 0
     if mouseX in buttonC and mouseY in buttonD:
         if x < 2:
-            image(plankslight, 1125, 450)
+            fill(0, 0, 0)
+            rect(1125, 450, 100, 50)
             fill(255, 255, 255)
             textSize(25)
             text('NEXT', 1140, 485)
@@ -95,10 +102,14 @@ def mousePressed():
             x = 2
     if mouseX in buttonE and mouseY in buttonF:
         if x > 0:
-            image(plankslight, 150, 450)
+            fill(0, 0, 0)
+            rect(150, 450, 100, 50)
             fill(255, 255, 255)
             textSize(25)
             text('BACK', 160, 485)
         x = x - 1
         if x == -1:
             x = 0
+            
+def keyPressed():
+    return
