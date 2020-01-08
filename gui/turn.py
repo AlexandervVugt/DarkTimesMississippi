@@ -1,4 +1,5 @@
 import main, popup_modify, popup_confirm, victorious
+import logic.Boat as Boat
 
 def setup():
     global eventText, diceText, endText, bg, bgs, font, dicebttn, cardback, logo
@@ -114,11 +115,17 @@ def mousePressed():
         # delete boat button 1250, 140, 100, 35
         popup_confirm.action = player.destroyBoat
         main.currentScene.append(main.scenes.get("popup_confirm"))
-    if not player.hasBoat() and mouseX in range(1340, 1420) and mouseY in range(140, 175):
+    if not player.hasBoat() and mouseY in range(140, 175):
+        if mouseX in range(1340, 1420):
             player.assignBoat()
             main.gameController.nextPlayer()
             main.gameController.startTurn(None)
             refresh()
+        elif mouseX in range(1250, 1330):
+            if player.getGold() >= 3:
+                boat = Boat.Boat(capacity = 15, sellPrice = 4)
+                player.assignBoat(boat)
+                player.mutateGold(-3)
     if player.getGold() >= 30 and mouseX in range(width-340, width-20) and mouseY in range(295, 320):
         main.currentScene.pop()
         victorious.player = player
