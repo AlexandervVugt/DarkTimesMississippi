@@ -86,8 +86,16 @@ def draw():
         fill(237, 206, 0)
         textSize(50)
         text('Settings', 575, 705)
-        
-    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF)) or ((mouseX in buttonG) and (mouseY in buttonH)) or ((mouseX in buttonI) and (mouseY in buttonJ) and (previousScene == main.scenes.get("turn")))):
+    
+    conditionalA = mouseX in buttonA and mouseY in buttonB
+    conditionalB = mouseX in buttonC and mouseY in buttonD
+    conditionalC = mouseX in buttonE and mouseY in buttonF
+    conditionalD = mouseX in buttonG and mouseY in buttonH
+    conditionalE = mouseX in buttonI and mouseY in buttonJ and previousScene == main.scenes.get("turn")
+    display = str(conditionalA) + "\n" + str(conditionalB) + "\n" + str(conditionalC) + "\n" + str(conditionalD) + "\n" + str(conditionalE)
+    # text(display, 10, 10)
+    if conditionalA or conditionalB or conditionalC or conditionalD or conditionalE:
+        # print("hand")
         cursor(HAND)
     else:
         cursor(ARROW)
