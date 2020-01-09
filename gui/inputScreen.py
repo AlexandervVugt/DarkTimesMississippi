@@ -87,7 +87,6 @@ def mousePressed():
         main.createGame(players)
         main.createController()
         main.gameController.startTurn(None)
-        main.currentScene.pop()
         turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
     if mouseX in buttonC and mouseY in buttonD:

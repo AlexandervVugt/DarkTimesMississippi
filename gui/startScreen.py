@@ -36,7 +36,7 @@ def draw():
         fill(255, 225, 22)
         textSize(50)
         text('New Game', 555, 405)
-        if ((mouseX in buttonA) and (mouseY in buttonB)):
+        if ((mouseX in buttonA) and (mouseY in buttonB) and (x == 0)):
             image(planksdark, 450, 350)
             fill(237, 206, 0)
             textSize(50)
@@ -46,13 +46,12 @@ def draw():
         fill(255, 225, 22)
         textSize(50)
         text('Resume Game', 510, 405)
-        if ((mouseX in buttonA) and (mouseY in buttonB)):
+        if ((mouseX in buttonA) and (mouseY in buttonB) and (x == 1)):
             image(planksdark, 450, 350)
             fill(237, 206, 0)
             textSize(50)
             text('Resume Game', 510, 405)
             
-    
     image(planks, 450, 450)
     fill(255, 225, 22)
     textSize(50)
@@ -101,7 +100,7 @@ def mousePressed():
         fill(255, 225, 22)
         textSize(50)
         text('Resume Game', 510, 405)
-        main.currentScene.append(main.scenes.get("inputScreen"))
+        main.currentScene.pop()
     if mouseX in buttonC and mouseY in buttonD:
         image(planks, 450, 450)
         fill(255, 225, 22)
