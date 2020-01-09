@@ -47,9 +47,10 @@ def disable_sound():
     sound.pause()
     
 def draw():
-    image(bg, 0, 0, width, height)
     global currentScene
     
+    if not currentScene[-1] in [scenes.get("dice"), scenes.get("victory")] or frameCount%5 == 0:
+        image(bg, 0, 0, width, height)
     currentScene[-1].draw()
     
 def keyTyped():

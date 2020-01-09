@@ -28,7 +28,6 @@ def setup():
     buttonF = range(645, 695)
     
 def draw():
-    size(1440, 900)
     image(bg, 0, 0)
     
     fill(255, 225, 22)

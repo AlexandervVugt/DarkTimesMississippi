@@ -4,6 +4,8 @@ def setup():
     global logo, bg, planks, planksdark, font, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ
     logo = loadImage("GameLogo.png")
     bg = loadImage("background.png")
+    wood = loadImage("woodtexture.png")
+    wood.resize(500, 75)
     planks = loadImage("woodenplanks.png")
     planks.resize(500, 75)
     planksdark = loadImage("woodenplanksdark.png")
@@ -91,7 +93,7 @@ def draw():
         cursor(ARROW)
 
 def mousePressed():
-    global x, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ
+    global buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ
     if ((mouseX in buttonA and mouseY in buttonB)):
         image(planks, 440, 350)
         fill(255, 225, 22)

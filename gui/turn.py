@@ -1,4 +1,5 @@
 import main, popup_modify, popup_confirm, victorious
+import logic.Boat as Boat
 
 def setup():
     global woodsmall, woodsmalldark, eventText, diceText, endText, bg, bgs, font, dicebttn, cardback, logo, buttonA, buttonB
@@ -46,7 +47,7 @@ def draw():
             #square(1, 1, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 1, 200, 200)
         if i == 2:
             fill (211, 211, 211)
@@ -54,7 +55,7 @@ def draw():
             #square(1, 210, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 100, 200, 420)
         if i == 3:
             fill (211, 211, 211)
@@ -62,7 +63,7 @@ def draw():
             #square(1, 420, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 200, 200, 640)
         if i == 4:
             fill (211, 211, 211)
@@ -70,7 +71,7 @@ def draw():
             #square(1, 630, 200);
             textSize(18)
             textFont(font, 18)
-            fill (217, 216, 114)
+            fill (255, 225, 22)
             text(playerlist[i-1].toString(), 2, 300, 200, 860)
     
     if (((mouseX in buttonA) and (mouseY in buttonB))):
@@ -87,10 +88,10 @@ def draw():
         eventButton()
     
     image(bgs, 1080, 1, 360, 320)
-    textSize(22)
-    fill(217, 216, 114)
+    textSize(28)
+    fill(255, 225, 22)
     textAlign(TOP)
-    text(player.toString(), width-340, 50, width, 500)
+    text(player.toString(), width-340, 20, width, 320)
     buttons()
     
 def mousePressed():
@@ -113,34 +114,40 @@ def mousePressed():
             refresh()
         elif mouseY in range(height/2-81, height/2+81):
             main.currentScene.append(main.scenes.get("event"))
-    if mouseX in range(1300, 1345):
+    if mouseX in range(1360, 1420):
         if player.hasBoat():
-            if mouseY in range(120, 140):
+            if mouseY in range(140, 175):
                 # sell button mechanism
                 popup_confirm.action = player.sellBoat
                 main.currentScene.append(main.scenes.get("popup_confirm"))
-            elif mouseY in range(195, 215):
+            elif mouseY in range(220, 255):
                 # load button
                 popup_modify.action = player.getBoat().load
                 main.currentScene.append(main.scenes.get("popup_modify"))
-        if mouseY in range(45, 65):
+        if mouseY in range(55, 90):
             # gold button
             popup_modify.action = player.mutateGold
             main.currentScene.append(main.scenes.get("popup_modify"))
-        elif mouseY in range(80, 100):
+        elif mouseY in range(95, 130):
             # wheat button
             popup_modify.action = player.mutateWheat
             main.currentScene.append(main.scenes.get("popup_modify"))
-    elif mouseX in range(1350, 1425) and mouseY in range(120, 140) and player.hasBoat():
-        # delete boat button
+    elif mouseX in range(1250, 1350) and mouseY in range(140, 175) and player.hasBoat():
+        # delete boat button 1250, 140, 100, 35
         popup_confirm.action = player.destroyBoat
         main.currentScene.append(main.scenes.get("popup_confirm"))
-    if not player.hasBoat() and mouseX in range(1300, 1365) and mouseY in range(120, 140):
-        player.assignBoat()
-        main.gameController.nextPlayer()
-        main.gameController.startTurn(None)
-        refresh()
-    if player.getGold() >= 30 and mouseX in range(width-350, width) and mouseY in range(290, 310):
+    if not player.hasBoat() and mouseY in range(140, 175):
+        if mouseX in range(1340, 1420):
+            player.assignBoat()
+            main.gameController.nextPlayer()
+            main.gameController.startTurn(None)
+            refresh()
+        elif mouseX in range(1250, 1330):
+            if player.getGold() >= 3:
+                boat = Boat.Boat(capacity = 15, sellPrice = 4)
+                player.assignBoat(boat)
+                player.mutateGold(-3)
+    if player.getGold() >= 30 and mouseX in range(width-340, width-20) and mouseY in range(295, 320):
         main.currentScene.pop()
         victorious.player = player
         main.currentScene.append(main.scenes.get("victorious"))
@@ -154,10 +161,6 @@ def keyTyped():
 def diceButton():
     global diceText
     
-    stroke(0)
-    strokeWeight(4)
-    square(width/2 - 75, height/2 - 75, 150)
-    noStroke()
     image(dicebttn, width/2 - 75, height/2 - 75, 150, 150)
     # fill (255, 0, 0)
     # text(diceText, 700, 150)
@@ -189,41 +192,50 @@ def endTurnButton():
 def buttons():
     global player
 
-    editButton(45.0)
-    editButton(80.0)
+    textAlign(CENTER, CENTER)
+    editButton(55)
+    editButton(95)
     if player.hasBoat():
-        editButton(195.0)
+        editButton(220)
         
-        fill(0)
-        rect(1300, 120, 45, 20)
+        fill(100 if mouseX in range(1360, 1420) and mouseY in range(140, 175) else 0)
+        rect(1360, 140, 60, 35)
         textSize(15)
-        fill(255, 255, 255)
-        text('SELL', 1305, 120, 1340, 140)
+        fill(255)
+        text('SELL', 1365, 145, 50, 25)
         
-        fill(0)
-        rect(1350, 120, 75, 20)
+        fill(100 if mouseX in range(1250, 1350) and mouseY in range(140, 175) else 0)
+        rect(1250, 140, 100, 35)
         textSize(15)
-        fill(255, 255, 255)
-        text('DESTROY', 1355, 120, 1420, 140)
+        fill(255)
+        text('DESTROY', 1255, 145, 90, 25)
     else:
-        fill(255, 255, 255)
-        rect(1300, 120, 65, 20)
+        fill(100 if mouseX in range(1340, 1420) and mouseY in range(140, 175) else 0)
+        rect(1340, 140, 80, 35)
         textSize(15)
-        fill(0, 0, 0)
-        text('CREATE', 1305, 120, 1360, 140)
+        fill(255)
+        text('CREATE', 1345, 145, 70, 25)
+        
+        fill(100 if mouseX in range(1250, 1330) and mouseY in range(140, 175) else 0)
+        rect(1250, 140, 80, 35)
+        textSize(15)
+        fill(255)
+        text('BUY', 1255, 145, 70, 25)
+        
     if player.getGold() >= 30:
-        fill(255, 255, 255)
-        rect(width-350, 290, 350, 20)
+        fill(100 if mouseX in range(width-360, width) and mouseY in range(295, 320) else 0)
+        rect(width-360, 295, 360, 25)
         textSize(15)
-        fill(0, 0, 0)
-        text('Farm reached, VICTORIOUS!', width-275, 290, width, 310)
+        fill(255)
+        textAlign(TOP, CENTER)
+        text('Farm reached, VICTORIOUS!', width-350, 300, 340, 20)
     
 def editButton(y):
-    fill(0)
-    rect(1300, y, 45, 20)
+    fill(100 if mouseX in range(1360, 1420) and mouseY in range(y, y+35) else 0)
+    rect(1360, y, 60, 35)
     textSize(15)
-    fill(255, 255, 255)
-    text('EDIT', 1305, y, 1340, y+20)
+    fill(255)
+    text('EDIT', 1365, y + 5, 50, 25)
 
 def refresh():
     global player
