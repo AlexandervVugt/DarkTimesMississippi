@@ -2,8 +2,7 @@ import main, turn
 import logic.Player as Player
 
 def setup():
-    global x, names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, woodsmall, woodsmalldark
-    x = 0
+    global names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, woodsmall, woodsmalldark
     names = []
     input = ""
     title = "Please enter the names of the players who will play."
@@ -25,6 +24,7 @@ def draw():
     global names, input, title, buttonText
     image(bg, 0, 0)
     
+    textFont(turn.font)
     image(woodsmall, 0, 0)
     fill(255, 225, 22)
     textSize(25)
@@ -80,7 +80,6 @@ def keyPressed():
 def mousePressed():
     global x, names, buttonX, buttonY, buttonC, buttonD, game
     if mouseX in buttonX and mouseY in buttonY and len(names) >= 2:
-        x = x + 1
         players = []
         for name in names:
             players.append(Player.Player(name))

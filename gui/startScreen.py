@@ -1,8 +1,7 @@
 import main, inputScreen
 
 def setup():
-    global x, logo, bg, planks, planksdark, font, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ
-    x = inputScreen.x
+    global logo, bg, planks, planksdark, font, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ
     logo = loadImage("GameLogo.png")
     bg = loadImage("background.png")
     planks = loadImage("woodenplanks.png")
@@ -22,7 +21,7 @@ def setup():
     buttonJ = range(750, 825)
 
 def draw():
-    size(1440, 900)
+    global previousScene
     image(bg, 0, 0)
     
     textAlign(LEFT, LEFT)
@@ -35,18 +34,22 @@ def draw():
     fill(255, 225, 22)
     textSize(50)
     text('New Game', 545, 405)
-    if ((mouseX in buttonA) and (mouseY in buttonB) and (x == 0)):
+    if ((mouseX in buttonA) and (mouseY in buttonB)):
         image(planksdark, 440, 350)
         fill(237, 206, 0)
         textSize(50)
         text('New Game', 545, 405)
     
-    if inputScreen.x == 1:
+    try:
+        previousScene = main.currentScene[-2]
+    except IndexError:
+        previousScene = None
+    if previousScene == main.scenes.get("turn"):
         image(planks, 440, 750)
         fill(255, 225, 22)
         textSize(50)
         text('Resume Game', 500, 805)
-        if ((mouseX in buttonI) and (mouseY in buttonJ) and (inputScreen.x == 1)):
+        if ((mouseX in buttonI) and (mouseY in buttonJ)):
             image(planksdark, 440, 750)
             fill(237, 206, 0)
             textSize(50)
@@ -82,7 +85,7 @@ def draw():
         textSize(50)
         text('Settings', 575, 705)
         
-    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF)) or ((mouseX in buttonG) and (mouseY in buttonH)) or ((mouseX in buttonI) and (mouseY in buttonJ) and (inputScreen.x == 1))):
+    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF)) or ((mouseX in buttonG) and (mouseY in buttonH)) or ((mouseX in buttonI) and (mouseY in buttonJ) and (previousScene == main.scenes.get("turn")))):
         cursor(HAND)
     else:
         cursor(ARROW)
@@ -95,6 +98,7 @@ def mousePressed():
         textSize(50)
         text('New Game', 545, 405)
         main.currentScene.append(main.scenes.get("inputScreen"))
+        main.currentScene[-1].setup()
     if mouseX in buttonC and mouseY in buttonD:
         image(planks, 440, 450)
         fill(255, 225, 22)
@@ -113,7 +117,7 @@ def mousePressed():
         textSize(50)
         text('Settings', 575, 705)
         main.currentScene.append(main.scenes.get("settingsScreen"))
-    if ((mouseX in buttonI and mouseY in buttonJ) and (inputScreen.x == 1)):
+    if ((mouseX in buttonI and mouseY in buttonJ) and (previousScene == main.scenes.get("turn"))):
         image(planks, 440, 750)
         fill(255, 225, 22)
         textSize(50)
