@@ -18,8 +18,8 @@ def setup():
     buttonF = range(550, 625)
     buttonG = range(440, 940)
     buttonH = range(650, 725)
-    buttonI = range(440, 540)
-    buttonJ = range(750, 800)
+    buttonI = range(440, 940)
+    buttonJ = range(750, 825)
 
 def draw():
     size(1440, 900)
@@ -41,12 +41,12 @@ def draw():
         textSize(50)
         text('New Game', 545, 405)
     
-    if x == 1:
+    if inputScreen.x == 1:
         image(planks, 440, 750)
         fill(255, 225, 22)
         textSize(50)
         text('Resume Game', 500, 805)
-        if ((mouseX in buttonI) and (mouseY in buttonJ) and (x == 1)):
+        if ((mouseX in buttonI) and (mouseY in buttonJ) and (inputScreen.x == 1)):
             image(planksdark, 440, 750)
             fill(237, 206, 0)
             textSize(50)
@@ -82,7 +82,7 @@ def draw():
         textSize(50)
         text('Settings', 575, 705)
         
-    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF)) or ((mouseX in buttonG) and (mouseY in buttonH)) or ((mouseX in buttonI) and (mouseY in buttonJ) and (x == 1))):
+    if (((mouseX in buttonA) and (mouseY in buttonB)) or ((mouseX in buttonC) and (mouseY in buttonD)) or ((mouseX in buttonE) and (mouseY in buttonF)) or ((mouseX in buttonG) and (mouseY in buttonH)) or ((mouseX in buttonI) and (mouseY in buttonJ) and (inputScreen.x == 1))):
         cursor(HAND)
     else:
         cursor(ARROW)
