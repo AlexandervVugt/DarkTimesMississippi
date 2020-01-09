@@ -2,7 +2,7 @@ import main, turn
 import logic.Player as Player
 
 def setup():
-    global names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, woodsmall, woodsmalldark
+    global names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, woodsmall, woodsmalldark, woodplanks, woodplanksdark
     names = []
     input = ""
     title = "Please enter the names of the players who will play."
@@ -19,6 +19,8 @@ def setup():
     woodsmall.resize(100, 50)
     woodsmalldark = loadImage("woodtexturesmalldark.png")
     woodsmalldark.resize(100, 50)
+    woodplanks = loadImage("woodenplanks.png")
+    woodplanksdark = loadImage("woodenplanksdark.png")
     
 def draw():
     global names, input, title, buttonText
@@ -47,10 +49,10 @@ def draw():
         fill(255)
         text(names[x], width/4, height/4 + x*100, width/2, 100)
     fill(0, 0, 0)
-    image(planks if mouseX in buttonX and mouseY in buttonY else plankslight, 3*width/8, 3*height/4, width/4, 100)
-    fill(210, 180, 140)
+    image(woodplanksdark if mouseX in buttonX and mouseY in buttonY else woodplanks, 3*width/8, 3*height/4, width/4, 100)
+    fill(255, 225, 22)
     if mouseX in buttonX and mouseY in buttonY:
-        fill(217, 216, 114)
+        fill(237, 206, 0)
     text(buttonText, 3*width/8, 3*height/4, width/4, 100)
     
     if (((mouseX in buttonX) and (mouseY in buttonY)) or ((mouseX in buttonC) and (mouseY in buttonD))):
