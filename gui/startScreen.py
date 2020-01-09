@@ -92,7 +92,7 @@ def draw():
     conditionalC = mouseX in buttonE and mouseY in buttonF
     conditionalD = mouseX in buttonG and mouseY in buttonH
     conditionalE = mouseX in buttonI and mouseY in buttonJ and previousScene == main.scenes.get("turn")
-    display = str(conditionalA) + "\n" + str(conditionalB) + "\n" + str(conditionalC) + "\n" + str(conditionalD) + "\n" + str(conditionalE)
+    # display = str(conditionalA) + "\n" + str(conditionalB) + "\n" + str(conditionalC) + "\n" + str(conditionalD) + "\n" + str(conditionalE)
     # text(display, 10, 10)
     if conditionalA or conditionalB or conditionalC or conditionalD or conditionalE:
         # print("hand")
