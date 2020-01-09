@@ -2,7 +2,8 @@ import main, turn
 import logic.Player as Player
 
 def setup():
-    global names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, planks, plankslight
+    global x, names, input, title, buttonText, buttonX, buttonY, buttonC, buttonD, alph, bg, woodsmall, woodsmalldark
+    x = 0
     names = []
     input = ""
     title = "Please enter the names of the players who will play."
@@ -15,24 +16,22 @@ def setup():
     buttonD = range(0, 50)
     alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     bg = loadImage("background.png")
-    planks = loadImage("woodenplanks.png")
-    planks.resize(100, 50)
-    plankslight = loadImage("woodenplankslight.png")
-    plankslight.resize(100, 50)
+    woodsmall = loadImage("woodtexturesmall.png")
+    woodsmall.resize(100, 50)
+    woodsmalldark = loadImage("woodtexturesmalldark.png")
+    woodsmalldark.resize(100, 50)
     
 def draw():
     global names, input, title, buttonText
     image(bg, 0, 0)
     
-    fill(0, 0, 0)
-    rect(0, 0, 100, 50)
-    fill(255, 255, 255)
+    image(woodsmall, 0, 0)
+    fill(255, 225, 22)
     textSize(25)
     text('BACK', 50, 25)
     if ((mouseX in buttonC) and (mouseY in buttonD)):
-        fill(100, 100, 100)
-        rect(0, 0, 100, 50)
-        fill(255, 255, 255)
+        image(woodsmalldark, 0, 0)
+        fill(237, 206, 0)
         textSize(25)
         text('BACK', 50, 25)
     
@@ -79,8 +78,9 @@ def keyPressed():
         input = input[:-1]
         
 def mousePressed():
-    global names, buttonX, buttonY, buttonC, buttonD, game
+    global x, names, buttonX, buttonY, buttonC, buttonD, game
     if mouseX in buttonX and mouseY in buttonY and len(names) >= 2:
+        x = x + 1
         players = []
         for name in names:
             players.append(Player.Player(name))
@@ -91,9 +91,8 @@ def mousePressed():
         turn.refresh()
         main.currentScene.append(main.scenes.get("turn"))
     if mouseX in buttonC and mouseY in buttonD:
-        fill(0, 0, 0)
-        rect(0, 0, 100, 50)
-        fill(255, 255, 255)
+        image(woodsmall, 0, 0)
+        fill(255, 225, 22)
         textSize(25)
         text('BACK', 50, 25)
         main.currentScene.pop()

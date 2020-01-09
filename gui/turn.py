@@ -1,8 +1,11 @@
 import main, popup_modify, popup_confirm, victorious
 
 def setup():
-    global eventText, diceText, endText, bg, bgs, font, dicebttn, cardback, logo
-    
+    global woodsmall, woodsmalldark, eventText, diceText, endText, bg, bgs, font, dicebttn, cardback, logo, buttonA, buttonB
+    woodsmall = loadImage("woodtexturesmall.png")
+    woodsmall.resize(100, 50)
+    woodsmalldark = loadImage("woodtexturesmalldark.png")
+    woodsmalldark.resize(100, 50)
     eventText = 'Click on the Blue button to draw event card'
     diceText = 'Click on the Red button to throw the dices'
     endText = 'END TURN'
@@ -13,6 +16,8 @@ def setup():
     dicebttn = loadImage("dicebttn.png")
     cardback = loadImage("card_back.png")
     logo = loadImage("GameLogo.png")
+    buttonA = range(202, 302)
+    buttonB = range(2, 52)
     
 def draw():
     global rolled
@@ -23,6 +28,15 @@ def draw():
     textSize(50)
     image(logo, 350, 1, 700, 250)
     
+    image(woodsmall, 202, 2)
+    fill(255, 225, 22)
+    textSize(25)
+    text('MENU', 252, 27)
+    if ((mouseX in buttonA) and (mouseY in buttonB)):
+        image(woodsmalldark, 202, 2)
+        fill(237, 206, 0)
+        textSize(25)
+        text('MENU', 252, 27)
 
     playerlist = main.game.getPlayers()
     for i in range(len(playerlist)+1):
@@ -58,11 +72,12 @@ def draw():
             textFont(font, 18)
             fill (217, 216, 114)
             text(playerlist[i-1].toString(), 2, 300, 200, 860)
-        
+    
+    if (((mouseX in buttonA) and (mouseY in buttonB))):
+        cursor(HAND)
+    else:
         cursor(ARROW)
-
-                
-        
+    
     textSize(24)
     rolled = main.gameController.getTurnInfo().getSteps() != -1
     if not rolled:
@@ -79,10 +94,16 @@ def draw():
     buttons()
     
 def mousePressed():
-    global main
+    global main, buttonA, buttonB
     
     # print("x: " + str(mouseX))
     # print("y: " + str(mouseY))
+    if mouseX in buttonA and mouseY in buttonB:
+        image(woodsmall, 202, 2)
+        fill(255, 225, 22)
+        textSize(25)
+        text('MENU', 252, 27)
+        main.currentScene.append(main.scenes.get("startScreen"))
     if not rolled and mouseX in range(width/2 - 75, width/2 + 75) and mouseY in range(height/2 - 75, height/2 + 75):
         main.currentScene.append(main.scenes.get("dice"))
     elif mouseX in range(width/2-150, width/2+150):

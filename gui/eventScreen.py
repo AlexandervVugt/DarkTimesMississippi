@@ -1,15 +1,15 @@
 import main
 
 def setup():
-    global x, bg, card, planks, plankslight, li, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
+    global x, bg, card, woodsmall, woodsmalldark, li, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     x = 0
     bg = loadImage("background.png")
     card = loadImage("card_front.png")
     card.resize(800, 400)
-    planks = loadImage("woodenplanks.png")
-    planks.resize(100, 50)
-    plankslight = loadImage("woodenplankslight.png")
-    plankslight.resize(100, 50)
+    woodsmall = loadImage("woodtexturesmall.png")
+    woodsmall.resize(100, 50)
+    woodsmalldark = loadImage("woodtexturesmalldark.png")
+    woodsmalldark.resize(100, 50)
     li = [
           "A violent storm sets, a tornado appears! \nShall thou risk travelling further? \nContinue (and lose 2 wheat) or skip thine next turn.",
           "An amateurish bandit robbed thine farm whilst \nthee were adventuring! \nYou lose 1 wheat out of your farm stock.",
@@ -52,7 +52,7 @@ def draw():
     size(1440, 900)
     image(bg, 0, 0)
     
-    fill(150, 0, 0)
+    fill(255, 225, 22)
     textSize(75)
     text('Event Screen', 695, 150)
     
@@ -63,41 +63,35 @@ def draw():
     text(li[x], 335, 275, width/2, height/2)
     textAlign(CENTER, CENTER)
     
-    fill(0, 0, 0)
-    rect(0, 0, 100, 50)
-    fill(255, 255, 255)
+    image(woodsmall, 0, 0)
+    fill(255, 225, 22)
     textSize(25)
     text('BACK', 50, 25)
     if ((mouseX in buttonA) and (mouseY in buttonB)):
-        fill(100, 100, 100)
-        rect(0, 0, 100, 50)
-        fill(255, 255, 255)
+        image(woodsmalldark, 0, 0)
+        fill(237, 206, 0)
         textSize(25)
         text('BACK', 50, 25)
     
     if x < 28:
-        fill(0, 0, 0)
-        rect(1190, 475, 100, 50)
-        fill(255, 255, 255)
+        image(woodsmall, 1190, 475)
+        fill(255, 225, 22)
         textSize(25)
         text('NEXT', 1240, 500)
         if ((mouseX in buttonC) and (mouseY in buttonD)):
-            fill(100, 100, 100)
-            rect(1190, 475, 100, 50)
-            fill(255, 255, 255)
+            image(woodsmalldark, 1190, 475)
+            fill(237, 206, 0)
             textSize(25)
             text('NEXT', 1240, 500)
             
     if x > 0:
-        fill(0, 0, 0)
-        rect(100, 475, 100, 50)
-        fill(255, 255, 255)
+        image(woodsmall, 100, 475)
+        fill(255, 225, 22)
         textSize(25)
         text('BACK', 150, 500)
         if ((mouseX in buttonE) and (mouseY in buttonF)):
-            fill(100, 100, 100)
-            rect(100, 475, 100, 50)
-            fill(255, 255, 255)
+            image(woodsmalldark, 100, 475)
+            fill(237, 206, 0)
             textSize(25)
             text('BACK', 150, 500)
             
@@ -109,18 +103,16 @@ def draw():
 def mousePressed():
     global x, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF
     if mouseX in buttonA and mouseY in buttonB:
-        fill(0, 0, 0)
-        rect(0, 0, 100, 50)
-        fill(255, 255, 255)
+        image(woodsmall, 0, 0)
+        fill(255, 225, 22)
         textSize(25)
         text('BACK', 50, 25)
         x = 0
         main.currentScene.pop()
     if mouseX in buttonC and mouseY in buttonD:
         if x < 28:
-            fill(0, 0, 0)
-            rect(1190, 475, 100, 50)
-            fill(255, 255, 255)
+            image(woodsmall, 1190, 475)
+            fill(255, 225, 0)
             textSize(25)
             text('NEXT', 1240, 500)
         x = x + 1
@@ -128,9 +120,8 @@ def mousePressed():
             x = 28
     if mouseX in buttonE and mouseY in buttonF:
         if x > 0:
-            fill(0, 0, 0)
-            rect(100, 475, 100, 50)
-            fill(210, 180, 140)
+            image(woodsmall, 100, 475)
+            fill(255, 225, 22)
             textSize(25)
             text('BACK', 150, 500)
         x = x - 1
@@ -138,4 +129,7 @@ def mousePressed():
             x = 0
             
 def keyPressed():
+    return
+
+def keyTyped():
     return
